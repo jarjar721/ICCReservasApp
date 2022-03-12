@@ -26,6 +26,17 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
+        path: 'activos',
+        loadChildren: () =>
+          import('./views/activos/activos.module').then((m) => m.ActivosModule)
+      },
+      {
+        path: 'personal',
+        loadChildren: () =>
+          import('./views/personal/personal.module').then((m) => m.PersonalModule)
+      },
+      /* SEPARACIÓN DE LA APP Y EL TEMPLATE */
+      {
         path: 'theme',
         loadChildren: () =>
           import('./views/theme/theme.module').then((m) => m.ThemeModule)

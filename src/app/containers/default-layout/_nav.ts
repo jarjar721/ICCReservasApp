@@ -5,11 +5,40 @@ export const navItems: INavData[] = [
     name: 'Dashboard',
     url: '/dashboard',
     iconComponent: { name: 'cil-speedometer' },
-    badge: {
+    /*badge: {
       color: 'info',
       text: 'NEW'
-    }
+    }*/
   },
+  {
+    title: true,
+    name: 'Activos'
+  },
+  {
+    name: 'Dispositivos',
+    url: '/activos/dispositivos',
+    iconComponent: { name: 'cil-devices' }
+  },
+  {
+    name: 'Instalaciones',
+    url: '/activos/instalaciones',
+    iconComponent: { name: 'cil-room' }
+  },
+  {
+    title: true,
+    name: 'Personal'
+  },
+  {
+    name: 'Horarios',
+    url: '/personal/horarios',
+    iconComponent: { name: 'cil-calendar' }
+  },
+  {
+    name: 'Usuarios',
+    url: '/personal/usuarios',
+    iconComponent: { name: 'cil-people' }
+  },
+  /* SEPARACION ENTRE LA APP Y EL TEMPLATE */
   {
     title: true,
     name: 'Theme'
