@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -36,7 +39,11 @@ import { HorariosComponent } from './horarios/horarios.component';
     NavModule,
     ProgressModule,
     TableModule,
-    TabsModule
+    TabsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ]
 })
 export class PersonalModule { }

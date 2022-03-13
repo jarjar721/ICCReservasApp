@@ -4,7 +4,10 @@
         Horarios
       </c-card-header>
       <c-card-body>
-        
+        <mwl-calendar-week-view
+          [viewDate]="viewDate"
+          [events]="events">
+        </mwl-calendar-week-view>
       </c-card-body>
     </c-card>
 </div>
