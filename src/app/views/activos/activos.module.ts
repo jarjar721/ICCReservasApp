@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+//import { DataTablesModule } from "angular-datatables";
+
 import {
   ButtonGroupModule,
   ButtonModule,
@@ -34,7 +36,8 @@ import { InstalacionesComponent } from './instalaciones/instalaciones.component'
     GridModule,
     ListGroupModule,
     SharedModule,
-    TableModule
+    TableModule,
+//    DataTablesModule
   ]
 })
 export class ActivosModule { }
