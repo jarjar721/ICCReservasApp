@@ -84,7 +84,7 @@ const APP_CONTAINERS = [
     ProgressModule,
     BadgeModule,
     ListGroupModule,
-    CardModule,
+    CardModule
   ],
   providers: [
     {

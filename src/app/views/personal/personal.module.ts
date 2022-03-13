@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  AvatarModule,
   ButtonGroupModule,
   ButtonModule,
   CardModule,
-  DropdownModule,
   FormModule,
   GridModule,
-  ListGroupModule,
-  SharedModule,
-  TableModule
+  NavModule,
+  ProgressModule,
+  TableModule,
+  TabsModule
 } from '@coreui/angular';
 
 import { PersonalRoutingModule } from './personal-routing.module';
@@ -26,15 +27,16 @@ import { HorariosComponent } from './horarios/horarios.component';
   imports: [
     CommonModule,
     PersonalRoutingModule,
+    AvatarModule,
     ButtonGroupModule,
     ButtonModule,
     CardModule,
-    DropdownModule,
     FormModule,
     GridModule,
-    ListGroupModule,
-    SharedModule,
-    TableModule
+    NavModule,
+    ProgressModule,
+    TableModule,
+    TabsModule
   ]
 })
 export class PersonalModule { }
