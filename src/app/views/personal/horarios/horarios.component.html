@@ -1,13 +1,28 @@
 <div class="fade-in">
     <c-card class="mb-4">
       <c-card-header>
-        Horarios
+        Elementary
       </c-card-header>
       <c-card-body>
-        <mwl-calendar-week-view
-          [viewDate]="viewDate"
-          [events]="events">
-        </mwl-calendar-week-view>
+        <full-calendar [options]="calendarElementaryOptions"></full-calendar>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        Middle School
+      </c-card-header>
+      <c-card-body>
+        <full-calendar [options]="calendarMiddleOptions"></full-calendar>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        High School
+      </c-card-header>
+      <c-card-body>
+        <full-calendar [options]="calendarHighOptions"></full-calendar>
       </c-card-body>
     </c-card>
 </div>
