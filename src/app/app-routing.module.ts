@@ -26,6 +26,11 @@ const routes: Routes = [
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
+        path: 'reservas',
+        loadChildren: () =>
+          import('./views/reservas/reservas.module').then((m) => m.ReservasModule)
+      },
+      {
         path: 'activos',
         loadChildren: () =>
           import('./views/activos/activos.module').then((m) => m.ActivosModule)

@@ -11,6 +11,11 @@ export const navItems: INavData[] = [
     }*/
   },
   {
+    name: 'Reservas',
+    url: '/reservas',
+    iconComponent: { name: 'cil-envelope-closed' }
+  },
+  {
     title: true,
     name: 'Activos'
   },
