@@ -11,9 +11,18 @@ export const navItems: INavData[] = [
     }*/
   },
   {
-    name: 'Reservas',
-    url: '/reservas',
-    iconComponent: { name: 'cil-envelope-closed' }
+    title: true,
+    name: 'Reservas'
+  },
+  {
+    name: 'Calendario de Reservas',
+    url: '/reservas/calendario',
+    iconComponent: { name: 'cil-calendar' }
+  },
+  {
+    name: 'Reservar',
+    url: '/reservas/crear',
+    iconComponent: { name: 'cil-notes' }
   },
   {
     title: true,
@@ -36,7 +45,7 @@ export const navItems: INavData[] = [
   {
     name: 'Horarios',
     url: '/personal/horarios',
-    iconComponent: { name: 'cil-calendar' }
+    iconComponent: { name: 'cil-spreadsheet' }
   },
   {
     name: 'Usuarios',

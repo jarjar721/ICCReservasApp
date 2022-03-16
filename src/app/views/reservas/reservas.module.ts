@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Full Calendar
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
@@ -18,9 +19,11 @@ import {
   TableModule,
   TabsModule
 } from '@coreui/angular';
+import { IconModule } from '@coreui/icons-angular';
 
 import { ReservasRoutingModule } from './reservas-routing.module';
 import { ReservasComponent } from './reservas.component';
+import { CrearReservaComponent } from './crear-reserva/crear-reserva.component'
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -29,7 +32,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 @NgModule({
   declarations: [
-    ReservasComponent
+    ReservasComponent,
+    CrearReservaComponent
   ],
   imports: [
     CommonModule,
@@ -39,9 +43,12 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ButtonModule,
     CardModule,
     FormModule,
+    FormsModule,
     GridModule,
+    IconModule,
     NavModule,
     ProgressModule,
+    ReactiveFormsModule,
     TableModule,
     TabsModule,
     FullCalendarModule // register FullCalendar with you app

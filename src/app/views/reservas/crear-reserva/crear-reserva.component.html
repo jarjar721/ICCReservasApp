@@ -1,0 +1,61 @@
+<div class="fade-in">
+    <c-card class="mb-4">
+      <c-card-header>
+        Nueva Reserva
+      </c-card-header>
+      <c-card-body>
+        <form #customStylesForm="ngForm"
+                (ngSubmit)="onSubmit1()"
+                [validated]="customStylesValidated"
+                cForm
+                class="row g-3 needs-validation"
+          >
+            <c-col md="12">
+              <label cLabel for="validationCustom01">Título</label>
+              <input cFormControl id="validationCustom01" required type="text" value="Mark" />
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </c-col>
+            <div class="mb-3">
+              <label cLabel for="exampleFormControlTextarea1">Descripción</label>
+              <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </div>
+            <c-col md="4">
+                <c-row>
+                    <label cLabel for="validationCustomUsername">Inicio</label>
+                    <c-col md="6">
+                        <input cFormControl id="validationCustom02" required type="text" value="Fecha" />
+                    </c-col>
+                    <c-col md="6">
+                        <input cFormControl id="validationCustom02" required type="text" value="Hora" />
+                    </c-col>
+                    <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                </c-row>
+            </c-col>
+            <c-col md="4">
+                <c-row>
+                    <label cLabel for="validationCustomUsername">Fin</label>
+                    <c-col md="6">
+                        <input cFormControl id="validationCustom02" required type="text" value="Fecha" />
+                    </c-col>
+                    <c-col md="6">
+                        <input cFormControl id="validationCustom02" required type="text" value="Hora" />
+                    </c-col>
+                    <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                </c-row>
+            </c-col>
+
+            <c-col xs="12">
+              <button (click)="onReset1()" cButton class="me-1" color="secondary" type="reset">
+                Cancelar
+              </button>
+              <button cButton color="primary" type="submit">
+                <svg cIcon class="me-2 icon" name="cil-check"></svg>
+                Crear
+              </button>
+            </c-col>
+          </form>
+          
+      </c-card-body>
+    </c-card>
+</div>
