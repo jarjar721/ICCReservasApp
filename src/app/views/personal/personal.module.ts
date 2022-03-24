@@ -6,6 +6,8 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // must go before pl
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 
+import { DataTablesModule } from "angular-datatables";
+
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -22,6 +24,7 @@ import {
 import { PersonalRoutingModule } from './personal-routing.module';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HorariosComponent } from './horarios/horarios.component';
+import { MateriasComponent } from './materias/materias.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -31,7 +34,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 @NgModule({
   declarations: [
     UsuariosComponent,
-    HorariosComponent
+    HorariosComponent,
+    MateriasComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +50,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ProgressModule,
     TableModule,
     TabsModule,
-    FullCalendarModule // register FullCalendar with you app
+    FullCalendarModule, // register FullCalendar with you app
+    DataTablesModule
   ]
 })
 export class PersonalModule { }

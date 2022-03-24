@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { CrearDispositivosComponent } from './crear-dispositivos/crear-dispositivos.component';
+import { CrearInstalacionComponent } from './crear-instalacion/crear-instalacion.component';
+
 import { DispositivosComponent } from './dispositivos/dispositivos.component';
 import { InstalacionesComponent } from './instalaciones/instalaciones.component';
 
@@ -23,10 +26,24 @@ const routes: Routes = [
         },
       },
       {
+        path: 'crear-dispositivo',
+        component: CrearDispositivosComponent,
+        data: {
+          title: 'Crear Dispositivo',
+        },
+      },
+      {
         path: 'instalaciones',
         component: InstalacionesComponent,
         data: {
           title: 'Instalaciones',
+        },
+      },
+      {
+        path: 'crear-instalacion',
+        component: CrearInstalacionComponent,
+        data: {
+          title: 'Crear Instalación',
         },
       },
     ],

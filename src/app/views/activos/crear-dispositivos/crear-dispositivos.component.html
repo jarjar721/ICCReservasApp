@@ -1,0 +1,92 @@
+<div class="fade-in">
+    <c-card class="mb-4">
+      <c-card-header>
+        Nuevo Dispositivo
+      </c-card-header>
+      <c-card-body>
+          <div class="row">
+            <form #customStylesForm="ngForm"
+                (ngSubmit)="onSubmit1()"
+                [validated]="customStylesValidated"
+                cForm
+                class="row g-3 needs-validation"
+                style="margin-top: 0;"
+            >
+                <div class="col-6">
+                    <c-col>
+                        <label cLabel for="validationCustom01">Nombre</label>
+                        <input cFormControl id="validationCustom01" required type="text" value="Mark" />
+                        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                    </c-col>
+                    <div class="row">
+                        <c-col>
+                            <label cLabel for="validationCustom01">Serial</label>
+                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
+                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                        </c-col>
+                        <c-col>
+                            <label cLabel for="validationCustom01">Tipo</label>
+                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
+                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                        </c-col>
+                    </div>
+                    <div class="row">
+                        <c-col>
+                            <label cLabel for="validationCustom01">Modelo</label>
+                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
+                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                        </c-col>
+                        <c-col>
+                            <label cLabel for="validationCustom01">Marca</label>
+                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
+                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                        </c-col>
+                    </div>
+                    
+                    <c-col>
+                        <label cLabel for="exampleFormControlTextarea1">Descripción</label>
+                        <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                    </c-col>
+
+                    <c-col style="float: right;">
+                        <button (click)="onReset1()" cButton class="me-1" color="secondary" type="reset">
+                            Cancelar
+                        </button>
+                        <button cButton color="primary" type="submit">
+                            <svg cIcon class="me-2 icon" name="cil-check"></svg>
+                            Crear
+                        </button>
+                    </c-col>
+
+                </div>
+                <div class="col-6">
+                    <c-card>
+                        <c-carousel (itemChange)="onItemChange($event)" [interval]="0">
+                            <c-carousel-inner>
+                              <c-carousel-item *ngFor="let slide of slides[0]">
+                                <img
+                                  [src]="slide.src"
+                                  alt="{{slide.title}}"
+                                  class="d-block w-100"
+                                  loading="lazy"
+                                />
+                              </c-carousel-item>
+                            </c-carousel-inner>
+                            <c-carousel-control [routerLink] caption="Previous" direction="prev" i18n-caption></c-carousel-control>
+                            <c-carousel-control [routerLink] caption="Next" direction="next" i18n-caption></c-carousel-control>
+                        </c-carousel>
+                        <c-card-body>
+                            <h5 cCardTitle>Imágenes del dispositivo</h5>
+                            <p cCardText>
+                                Cargue varias fotos del dispositivo mostrando todas las caras de interés.
+                            </p>
+                            <button cButton color="primary">Upload</button>
+                        </c-card-body>
+                    </c-card>
+                </div>
+            </form>
+          </div>
+      </c-card-body>
+    </c-card>
+</div>

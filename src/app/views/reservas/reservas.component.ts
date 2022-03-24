@@ -31,7 +31,6 @@ export class ReservasComponent implements OnInit {
         text: 'Agregar',
         click: function() {
           alert('clicked Agregar Reserva button!');
-          //window.location.href = 'http://localhost:4200/#/reservas/crear'
         }
       }
     },
@@ -56,13 +55,13 @@ export class ReservasComponent implements OnInit {
     
   };
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
 
   }
 
-  navigateToCreateReserva() {
+  public navigateToCreateReserva() {
     this.router.navigate(['reservas/calendario']);
   }
 
