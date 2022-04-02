@@ -23,16 +23,7 @@ export class ReservasComponent implements OnInit {
     headerToolbar: {
       start: 'dayGridMonth,timeGridWeek,dayGridDay,listWeek',
       center: 'title',
-      end: 'Agregar today,prev,next'
-    },
-
-    customButtons: {
-      Agregar: {
-        text: 'Agregar',
-        click: function() {
-          alert('clicked Agregar Reserva button!');
-        }
-      }
+      end: 'today,prev,next'
     },
 
     slotLabelFormat: {
@@ -58,11 +49,10 @@ export class ReservasComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit(): void {
-
   }
 
-  public navigateToCreateReserva() {
-    this.router.navigate(['reservas/calendario']);
+  agendarReserva() {
+    this.router.navigate(['/reservas/crear']);
   }
 
 }

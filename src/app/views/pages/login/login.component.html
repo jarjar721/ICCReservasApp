@@ -5,29 +5,33 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
+              <form cForm [formGroup]="loginModel" (submit)="onSubmit()">
                 <h1>ICC-SRRT</h1>
                 <p class="text-medium-emphasis">Ingrese a su cuenta</p>
+
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Usuario" />
+                  <input formControlName="Email" autoComplete="email" cFormControl placeholder="Correo electrónico" />
                 </c-input-group>
+
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
                   <input
+                    formControlName="Password"
                     autoComplete="current-password"
                     cFormControl
                     placeholder="Contraseña"
                     type="password"
                   />
                 </c-input-group>
+                
                 <c-row>
                   <c-col xs="5">
-                    <button cButton class="px-4" color="primary">
+                    <button cButton [disabled]="!loginModel.valid" class="px-4" color="primary">
                       Ingresar
                     </button>
                   </c-col>
@@ -43,13 +47,13 @@
           <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
             <c-card-body class="text-center">
               <div>
-                <h2>Sign up</h2>
+                <h2>Registrarse</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                  Para registrarse, su cuenta ha debido ser habilitada por el equipo de soporte
+                  tecnológico. Si es así, haga click sobre el boton "Registrase" para continuar.
                 </p>
                 <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
-                  Register Now!
+                  Registrarse
                 </button>
               </div>
             </c-card-body>

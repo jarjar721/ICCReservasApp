@@ -49,16 +49,6 @@
                         <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
                     </c-col>
 
-                    <c-col style="float: right;">
-                        <button (click)="onReset1()" cButton class="me-1" color="secondary" type="reset">
-                            Cancelar
-                        </button>
-                        <button cButton color="primary" type="submit">
-                            <svg cIcon class="me-2 icon" name="cil-check"></svg>
-                            Crear
-                        </button>
-                    </c-col>
-
                 </div>
                 <div class="col-6">
                     <c-card>
@@ -84,6 +74,17 @@
                             <button cButton color="primary">Upload</button>
                         </c-card-body>
                     </c-card>
+
+                    <c-col style="float: right; padding-top: 1em;">
+                        <button (click)="onReset1()" cButton class="me-1" color="secondary" type="reset">
+                            Cancelar
+                        </button>
+                        <button cButton color="primary" type="submit">
+                            <svg cIcon class="me-2 icon" name="cil-check"></svg>
+                            Crear
+                        </button>
+                    </c-col>
+
                 </div>
             </form>
           </div>

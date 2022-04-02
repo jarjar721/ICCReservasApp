@@ -2,6 +2,12 @@
     <c-card class="mb-4">
       <c-card-header>
         Reservas
+        <button 
+        cButton class="me-1" variant="outline" size="sm" style="float: right;"
+        (click)="agendarReserva()"
+        >
+          Agendar
+        </button>
       </c-card-header>
       <c-card-body>
         <full-calendar [options]="calendarReservasOptions"></full-calendar>

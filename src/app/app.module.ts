@@ -3,6 +3,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -22,6 +23,9 @@ import {
   DefaultHeaderComponent,
   DefaultLayoutComponent,
 } from './containers';
+
+// Import services
+import { UserService } from './shared/user.service';
 
 import {
   AvatarModule,
@@ -84,7 +88,8 @@ const APP_CONTAINERS = [
     ProgressModule,
     BadgeModule,
     ListGroupModule,
-    CardModule
+    CardModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -96,7 +101,8 @@ const APP_CONTAINERS = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     IconSetService,
-    Title
+    Title,
+    UserService
   ],
   bootstrap: [AppComponent],
 })

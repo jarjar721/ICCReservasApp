@@ -4,33 +4,37 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
-              <h1>Register</h1>
-              <p class="text-medium-emphasis">Create your account</p>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
-              </c-input-group>
+            <form cForm [formGroup]="accountUnlockModel" (submit)="onSubmit()">
+              <h1>Registro</h1>
+              <p class="text-medium-emphasis">Crea una cuenta</p>
+
+              <label class="text-danger" *ngIf="accountUnlockModel.get('Email')?.touched && accountUnlockModel.get('Email')?.errors?.['required']">Campo obligatorio</label>
+              <label class="text-danger" *ngIf="accountUnlockModel.get('Email')?.touched && accountUnlockModel.get('Email')?.errors?.['email']">Campo debe tener un email válido</label>
               <c-input-group class="mb-3">
                 <span cInputGroupText>@</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <input formControlName="Email" autoComplete="email" cFormControl placeholder="Email" />
               </c-input-group>
+
+              <label class="text-danger" *ngIf="accountUnlockModel.get('Password')?.touched && accountUnlockModel.get('Password')?.errors?.['required']">Campo obligatorio</label>
+              <label class="text-danger" *ngIf="accountUnlockModel.get('Password')?.touched && accountUnlockModel.get('Password')?.errors?.['minlength']">Contraseña debe tener al menos 3 caracteres</label>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
+                <input formControlName="Password" autoComplete="new-password" cFormControl placeholder="Password" type="password" />
               </c-input-group>
+
+              <label class="text-danger" *ngIf="accountUnlockModel.get('ConfirmPassword')?.touched && accountUnlockModel.get('ConfirmPassword')?.errors?.['required']">Campo obligatorio</label>
+              <label class="text-danger" *ngIf="accountUnlockModel.get('ConfirmPassword')?.touched && accountUnlockModel.get('ConfirmPassword')?.errors?.['passwordMismatch']">Passwords no coinciden</label>
               <c-input-group class="mb-4">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+                <input formControlName="ConfirmPassword" autoComplete="new-password" cFormControl placeholder="Confirmar password" type="password" />
               </c-input-group>
+              
               <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+                <button [disabled]="!accountUnlockModel.valid" cButton color="success">Crear cuenta</button>
               </div>
             </form>
           </c-card-body>

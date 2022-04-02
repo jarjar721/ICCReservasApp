@@ -20,11 +20,6 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-calendar' }
   },
   {
-    name: 'Reservar',
-    url: '/reservas/crear',
-    iconComponent: { name: 'cil-notes' }
-  },
-  {
     title: true,
     name: 'Activos'
   },
@@ -56,6 +51,25 @@ export const navItems: INavData[] = [
     name: 'Usuarios',
     url: '/personal/usuarios',
     iconComponent: { name: 'cil-people' }
+  },
+  {
+    title: true,
+    name: 'Configuraciones'
+  },
+  {
+    name: 'Perfil',
+    url: '/configuraciones/perfil',
+    iconComponent: { name: 'cil-settings' }
+  },
+  {
+    name: 'Parámetros',
+    url: '/configuraciones/parametros',
+    iconComponent: { name: 'cil-settings' }
+  },
+  {
+    name: 'Preferencias',
+    url: '/configuraciones/preferencias',
+    iconComponent: { name: 'cil-settings' }
   },
   /* SEPARACION ENTRE LA APP Y EL TEMPLATE */
   {
