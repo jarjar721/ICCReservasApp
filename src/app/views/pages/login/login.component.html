@@ -28,19 +28,16 @@
                     type="password"
                   />
                 </c-input-group>
-                
-                <c-row>
-                  <c-col xs="5">
-                    <button cButton [disabled]="!loginModel.valid" class="px-4" color="primary">
-                      Ingresar
-                    </button>
-                  </c-col>
-                  <c-col class="text-right" xs="7">
-                    <button cButton class="px-0" color="link">
-                      ¿Olvidó su contraseña?
-                    </button>
-                  </c-col>
-                </c-row>
+                <c-col>
+                  <button cButton (click)="onSubmit()" [disabled]="!loginModel.valid" class="px-4" color="primary">
+                    Ingresar
+                  </button>
+                </c-col>
+                <c-col >
+                  <button cButton class="px-0" color="link">
+                    ¿Olvidó su contraseña?
+                  </button>
+                </c-col>
               </form>
             </c-card-body>
           </c-card>

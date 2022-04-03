@@ -18,16 +18,20 @@ export class LoginComponent implements OnInit {
   constructor(public service: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    if (localStorage.getItem('token') != null) {
+      this.router.navigate(['/dashboard']);
+    } else
     this.loginModel.reset();
   }
 
-  onSubmit() {
+  onSubmit() { 
     this.service.login(this.loginModel).subscribe(
       (res:any) => {
+        console.log(res);
         this.loginModel.reset();
         localStorage.setItem('token', res.token);
-        localStorage.setItem('userID', res.user.id);
-        this.router.navigateByUrl('/dashboard');
+        localStorage.setItem('user.userID', res.user.userID);
+        this.router.navigate(['/dashboard']);
       },
       err => {
         console.log(err);

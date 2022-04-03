@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
 
 @Component({
@@ -17,7 +18,10 @@ export class RegisterComponent implements OnInit{
     validator: this.comparePasswords
   });
 
-  constructor(public service: UserService, private formBuilder: FormBuilder) { }
+  constructor(
+    public service: UserService,
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
   comparePasswords(fb: FormGroup) {
     let confirmPasswordCtrl = fb.get('ConfirmPassword');
@@ -37,25 +41,13 @@ export class RegisterComponent implements OnInit{
 
   onSubmit() {
     this.service.unlockAccount(this.accountUnlockModel).subscribe(
-      (res:any) => {
-        if (res.succeeded) {
-          this.accountUnlockModel.reset();
-        } else {
-          res.errors.forEach((element: { code: any; }) => {
-            switch (element.code) {
-              case 'value':
-                
-                break;
-            
-              default:
-                //Falló
-                break;
-            }
-          });
-        }
+      res => {
+        this.accountUnlockModel.reset();
+        console.log(res);
+        this.router.navigate(['/login']);
       },
       err => {
-        console.log(err);
+        console.log('Error: ' + err);
       }
     )
   }

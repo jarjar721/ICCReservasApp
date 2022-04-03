@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UserService } from 'src/app/shared/user.service';
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
 
@@ -22,8 +23,12 @@ interface IUser {
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartsData: DashboardChartsData) {
+
+  constructor(private chartsData: DashboardChartsData, private service: UserService) {
+
   }
+
+  //userDetails: any;
 
   public users: IUser[] = [
     {
@@ -113,6 +118,16 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCharts();
+    /*
+    this.service.getUserDetails().subscribe(
+      res => {
+        this.userDetails = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    */
   }
 
   initCharts(): void {

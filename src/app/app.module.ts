@@ -26,6 +26,7 @@ import {
 
 // Import services
 import { UserService } from './shared/user.service';
+import { AuthGuard } from './auth/auth.guard'
 
 import {
   AvatarModule,
@@ -102,7 +103,8 @@ const APP_CONTAINERS = [
     },
     IconSetService,
     Title,
-    UserService
+    UserService,
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })
