@@ -28,9 +28,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Getting userID: '+localStorage.getItem("user.userID"));
     this.userID = localStorage.getItem("user.userID");
-
     this.service.getUserDetails(this.userID).subscribe(
       res => {
         this.userDetails = res;

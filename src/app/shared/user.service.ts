@@ -28,8 +28,7 @@ export class UserService {
   }
 
   getUserDetails(userID: string) {
-    var tokenHeader = new HttpHeaders({'Authorization': 'Bearer '+localStorage.getItem('token')});
-    return this.http.get(this.BaseURI+'Usuarios/User/'+userID, {headers: tokenHeader});
+    return this.http.get(this.BaseURI+'Usuarios/User/'+userID);
   }
 
 }

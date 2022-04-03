@@ -3,7 +3,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -27,6 +27,7 @@ import {
 // Import services
 import { UserService } from './shared/user.service';
 import { AuthGuard } from './auth/auth.guard'
+import { AuthInterceptor } from "./auth/auth.interceptor";
 
 import {
   AvatarModule,
@@ -104,7 +105,12 @@ const APP_CONTAINERS = [
     IconSetService,
     Title,
     UserService,
-    AuthGuard
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
