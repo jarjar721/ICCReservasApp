@@ -22,9 +22,13 @@ import {
 } from '@coreui/angular';
 
 import { PersonalRoutingModule } from './personal-routing.module';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UsuariosComponent } from './usuarios/index/usuarios.component';
+import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
+
 import { HorariosComponent } from './horarios/horarios.component';
 import { MateriasComponent } from './materias/materias.component';
+
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -34,8 +38,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 @NgModule({
   declarations: [
     UsuariosComponent,
+    CreateUsuarioComponent,
     HorariosComponent,
-    MateriasComponent
+    MateriasComponent,
   ],
   imports: [
     CommonModule,

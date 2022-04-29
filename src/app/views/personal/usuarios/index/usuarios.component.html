@@ -1,0 +1,32 @@
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-header>
+      Usuarios
+    </c-card-header>
+    <c-card-body>
+      <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+          <tr>
+            <th>Empleado</th>
+            <th>Email</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td><a routerLink="{{ usuario.id }}">{{ usuario.names }} {{ usuario.lastNames }}</a></td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.userName }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Empleado</th>
+            <th>Email</th>
+            <th>Username</th>
+          </tr>
+        </tfoot>
+      </table>   
+    </c-card-body>
+  </c-card>
+</div>

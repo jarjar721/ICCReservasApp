@@ -28,7 +28,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userID = localStorage.getItem("user.userID");
+    this.userID = localStorage.getItem("userID");
     this.service.getUserDetails(this.userID).subscribe(
       res => {
         this.userDetails = res;
@@ -42,7 +42,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
 
   onLogout() {
     localStorage.removeItem("token");
-    localStorage.removeItem("user.userID");
+    localStorage.removeItem("user.id");
     this.router.navigate(['/login']);
   }
 

@@ -25,9 +25,13 @@ import {
 } from './containers';
 
 // Import services
-import { UserService } from './shared/user.service';
 import { AuthGuard } from './auth/auth.guard'
 import { AuthInterceptor } from "./auth/auth.interceptor";
+import { UserService } from './shared/user.service';
+import { MateriaService } from './shared/materia.service';
+import { HorarioService } from './shared/horario.service';
+import { DispositivoService } from './shared/dispositivo.service';
+import { InstalacionService } from './shared/instalacion.service';
 
 import {
   AvatarModule,
@@ -51,6 +55,8 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+
+import { ToastrModule } from 'ngx-toastr';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -91,7 +97,8 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
@@ -105,6 +112,10 @@ const APP_CONTAINERS = [
     IconSetService,
     Title,
     UserService,
+    MateriaService,
+    HorarioService,
+    DispositivoService,
+    InstalacionService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
@@ -112,7 +123,7 @@ const APP_CONTAINERS = [
       multi: true
     }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

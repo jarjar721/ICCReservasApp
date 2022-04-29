@@ -12,188 +12,27 @@
             <tr>
               <th>Código</th>
               <th>Nombre</th>
+              <th>Nivel</th>
               <th>Grado</th>
               <th>Estado</th>
-              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Foo</td>
-              <td>Bar</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Someone</td>
-              <td>Youknow</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Iamout</td>
-              <td>Foo</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Yoda</td>
-              <td>Skywalker</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Patrick</td>
-              <td>Dupont</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Barack</td>
-              <td>Obama</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>François</td>
-              <td>Holland</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Michel</td>
-              <td>Popo</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Chuck</td>
-              <td>Norris</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Simon</td>
-              <td>Robin</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td>Louis</td>
-              <td>Lin</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td>Zelda</td>
-              <td>Link</td>
-              <td>Habilitado</td>
-              <td>
-                <button cButton class="me-1" active="true" size="sm" shape="rounded-pill">
-                  Editar
-                </button>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
-                  Eliminar
-                </button>
-              </td>
+            <tr *ngFor="let materia of materias">
+              <td><a routerLink="{{ materia.id }}">{{ materia.codigo }}</a></td>
+              <td>{{ materia.nombre }}</td>
+              <td>{{ materia.nivel }}</td>
+              <td>{{ materia.grado }}</td>
+              <td>{{ materia.status }}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-                <th>Código</th>
-                <th>Nombre</th>
-                <th>Grado</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Nivel</th>
+              <th>Grado</th>
+              <th>Estado</th>
             </tr>
           </tfoot>
         </table>        

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HorariosComponent } from './horarios/horarios.component';
 import { MateriasComponent } from './materias/materias.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UsuariosComponent } from './usuarios/index/usuarios.component';
+import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,13 @@ const routes: Routes = [
         component: UsuariosComponent,
         data: {
           title: 'Usuarios',
+        },
+      },
+      {
+        path: 'create-usuario',
+        component: CreateUsuarioComponent,
+        data: {
+          title: 'Create Usuario',
         },
       },
       {
