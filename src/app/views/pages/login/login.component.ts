@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserService } from 'src/app/shared/user.service';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
 
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    public service: UserService, 
+    public service: AuthenticationService, 
     private formBuilder: FormBuilder, 
     private router: Router, 
     private spinner: NgxSpinnerService,

@@ -1,5 +1,5 @@
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true">
-  <p style="color: white" > Regristando usuario... </p>
+  <p style="color: white" > Registrando usuario... </p>
 </ngx-spinner>
 
 <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
@@ -41,6 +41,13 @@
                 <button [disabled]="!accountUnlockModel.valid" cButton (click)="onSubmit()" color="success">Crear cuenta</button>
               </div>
             </form>
+
+            <div class="d-grid">
+              <button cButton class="px-0"  color="link" routerLink="/login" style="padding-top: 12px; padding-bottom: 6px;">
+                Ya tengo una cuenta - Log in
+              </button>
+            </div>
+
           </c-card-body>
         </c-card>
       </c-col>

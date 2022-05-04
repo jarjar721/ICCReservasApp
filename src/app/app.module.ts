@@ -25,8 +25,10 @@ import {
 } from './containers';
 
 // Import services
+import { EnvironmentUrlService } from './shared/environment-url.service';
 import { AuthGuard } from './auth/auth.guard'
 import { AuthInterceptor } from "./auth/auth.interceptor";
+import { AuthenticationService } from './shared/authentication.service';
 import { UserService } from './shared/user.service';
 import { MateriaService } from './shared/materia.service';
 import { HorarioService } from './shared/horario.service';
@@ -111,6 +113,8 @@ const APP_CONTAINERS = [
     },
     IconSetService,
     Title,
+    EnvironmentUrlService,
+    AuthenticationService,
     UserService,
     MateriaService,
     HorarioService,
