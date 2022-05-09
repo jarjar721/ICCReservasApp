@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { FormGroup } from '@angular/forms';
 
 import { ForgotPasswordDTO } from '../interfaces/forgot-password-DTO'
+import { ResetPasswordDTO } from '../interfaces/reset-password-DTO'
 import { EnvironmentUrlService } from './environment-url.service';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class AuthenticationService {
 
   // Register preregistered account
   unlockAccount(accountUnlockModel: FormGroup) {
-    var body = {
+    const body = {
       Email: accountUnlockModel.value.Email,
       Password: accountUnlockModel.value.Password
     };
@@ -24,7 +25,7 @@ export class AuthenticationService {
   }
 
   login(loginModel: FormGroup) {
-    var body = {
+    const body = {
       Email: loginModel.value.Email,
       Password: loginModel.value.Password
     };
@@ -34,13 +35,13 @@ export class AuthenticationService {
   forgotPassword(forgottenPasswordModel: FormGroup) {
     const body: ForgotPasswordDTO = {
       email: forgottenPasswordModel.value.Email,
-      clientURI: 'http://localhost:4200/authentication/resetpassword'
+      clientURI: 'http://localhost:4200/reset-password/'
     }
-    return this._http.post(this.createCompleteRoute('Authentication/ForgotPassword', this._envUrl.urlAddress), body);
+    return this._http.post(this.BaseURI + 'Authentication/ForgotPassword', body);
   }
 
-  private createCompleteRoute(route: string, envAddress: string) {
-    return `${envAddress}/${route}`;
+  public resetPassword(body: ResetPasswordDTO) {
+    return this._http.post(this.BaseURI + 'Authentication/ResetPassword', body);
   }
 
 }

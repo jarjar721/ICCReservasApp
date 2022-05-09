@@ -45,20 +45,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userID', res.responseUser.id);
         this.router.navigate(['/dashboard']);
 
+        this.spinner.hide();
         this.toastr.success('Login exitoso','¡Bienvenido!');
 
-        setTimeout(() => {
-          /** spinner ends after 2 seconds */
-          this.spinner.hide();
-        }, 2000);
       },
       err => {
-        
-        setTimeout(() => {
-          /** spinner ends after 2 seconds */
-          this.spinner.hide();
-        }, 2000);
-
+        this.spinner.hide();
         this.toastr.error(err.error.Message, '¡Ups!');
       }
     )

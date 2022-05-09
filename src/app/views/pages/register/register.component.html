@@ -37,6 +37,9 @@
                 <input formControlName="ConfirmPassword" autoComplete="new-password" cFormControl placeholder="Confirmar password" type="password" />
               </c-input-group>
 
+              <ngx-spinner bdColor = "rgba(0, 0, 0, 0.3)" size = "medium" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "false">
+              </ngx-spinner>
+
               <div class="d-grid">
                 <button [disabled]="!accountUnlockModel.valid" cButton (click)="onSubmit()" color="success">Crear cuenta</button>
               </div>

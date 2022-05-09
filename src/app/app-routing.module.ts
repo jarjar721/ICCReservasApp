@@ -9,6 +9,7 @@ import { RegisterComponent } from './views/pages/register/register.component';
 
 import { AuthGuard } from './auth/auth.guard';
 import { ForgotPasswordComponent } from './views/pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -127,6 +128,13 @@ const routes: Routes = [
       title: 'Forgotten Password Page'
     }
   },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    data: {
+      title: 'Reset Password Page'
+    }
+  },
   {path: '**', redirectTo: 'dashboard'}
 ];
 
@@ -135,7 +143,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
-      initialNavigation: 'enabledBlocking'
+      initialNavigation: 'enabledBlocking',
+      useHash: false
       // relativeLinkResolution: 'legacy'
     })
   ],
