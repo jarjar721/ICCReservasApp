@@ -20,6 +20,7 @@ export class UsuariosComponent implements OnDestroy, OnInit {
   constructor(public service: UserService) { }
 
   ngOnInit(): void {
+    this.getUserList();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -27,7 +28,6 @@ export class UsuariosComponent implements OnDestroy, OnInit {
         url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
       }
     };
-    this.getUserList();
   }
 
   getUserList() {
