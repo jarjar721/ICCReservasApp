@@ -160,10 +160,17 @@ export class HorariosComponent implements OnInit {
     this.service.getAllHorarios().subscribe(
       res => {
         this.horarios = (res as any)
-        console.log(this.horarios);
+
         this.sortHorariosByNivel(this.horarios);
         this.setCalendarEvents(this.eventsLE, this.horariosLowerElementary);
-        console.log(this.eventsLE);
+        this.setCalendarEvents(this.eventsUE, this.horariosUpperElementary);
+        this.setCalendarEvents(this.eventsMS, this.horariosMiddle);
+        this.setCalendarEvents(this.eventsHS, this.horariosHigh);
+
+        this.calendarLowerElementaryOptions.events = this.eventsLE;
+        this.calendarUpperElementaryOptions.events = this.eventsUE;
+        this.calendarMiddleOptions.events = this.eventsMS;
+        this.calendarHighOptions.events = this.eventsHS;
       },
       err => {
         console.log(err);
