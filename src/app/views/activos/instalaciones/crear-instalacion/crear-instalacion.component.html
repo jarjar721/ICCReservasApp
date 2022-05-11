@@ -6,8 +6,8 @@
       <c-card-body>
           <div class="row">
             <form #customStylesForm="ngForm"
-                (ngSubmit)="onSubmit1()"
-                [validated]="customStylesValidated"
+                [formGroup]="createInstalacionModel"
+                (ngSubmit)="onSubmit()"
                 cForm
                 class="row g-3 needs-validation"
                 style="margin-top: 0;"
@@ -15,45 +15,45 @@
                 <div class="col-6">
                     <div class="row">
                         <c-col>
-                            <label cLabel for="validationCustom01">Código</label>
-                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
-                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                            <label cLabel>Código</label>
+                            <input formControlName="Codigo" cFormControl required type="text" />
+                            <label class="text-danger" *ngIf="createInstalacionModel.get('Codigo')?.touched && createInstalacionModel.get('Codigo')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                         <c-col>
-                            <label cLabel for="validationCustom01">Nombre</label>
-                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
-                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
-                        </c-col>
-                    </div>
-                    <div class="row">
-                        <c-col>
-                            <label cLabel for="validationCustom01">Tipo</label>
-                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
-                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
-                        </c-col>
-                        <c-col>
-                            <label cLabel for="validationCustom01">Capacidad</label>
-                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
-                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                            <label cLabel >Nombre</label>
+                            <input formControlName="Nombre" cFormControl required type="text" />
+                            <label class="text-danger" *ngIf="createInstalacionModel.get('Nombre')?.touched && createInstalacionModel.get('Nombre')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                     </div>
                     <div class="row">
                         <c-col>
-                            <label cLabel for="validationCustom01">Edificio</label>
-                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
-                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                            <label cLabel >Tipo</label>
+                            <input formControlName="Tipo" cFormControl required type="text" />
+                            <label class="text-danger" *ngIf="createInstalacionModel.get('Tipo')?.touched && createInstalacionModel.get('Tipo')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                         <c-col>
-                            <label cLabel for="validationCustom01">Piso</label>
-                            <input cFormControl id="validationCustom01" required type="text" value="Mark" />
-                            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                            <label cLabel >Capacidad</label>
+                            <input formControlName="Capacidad" cFormControl required type="number" />
+                            <label class="text-danger" *ngIf="createInstalacionModel.get('Capacidad')?.touched && createInstalacionModel.get('Capacidad')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                    </div>
+                    <div class="row">
+                        <c-col>
+                            <label cLabel >Edificio</label>
+                            <input formControlName="Edificio" cFormControl required type="text" />
+                            <label class="text-danger" *ngIf="createInstalacionModel.get('Edificio')?.touched && createInstalacionModel.get('Edificio')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                        <c-col>
+                            <label cLabel >Piso</label>
+                            <input formControlName="Piso" cFormControl required type="text" />
+                            <label class="text-danger" *ngIf="createInstalacionModel.get('Piso')?.touched && createInstalacionModel.get('Piso')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                     </div>
                     
                     <c-col>
-                        <label cLabel for="exampleFormControlTextarea1">Descripción</label>
-                        <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                        <label cLabel >Descripción</label>
+                        <textarea formControlName="Descripcion" cFormControl required rows="3"></textarea>
+                        <label class="text-danger" *ngIf="createInstalacionModel.get('Descripción')?.touched && createInstalacionModel.get('Descripción')?.errors?.['required']">Campo requerido</label>
                     </c-col>
 
                 </div>
@@ -83,7 +83,7 @@
                     </c-card>
 
                     <c-col style="float: right; padding-top: 1em;">
-                        <button (click)="onReset1()" cButton class="me-1" color="secondary" type="reset">
+                        <button (click)="onReset()" cButton class="me-1" color="secondary" type="reset">
                             Cancelar
                         </button>
                         <button cButton color="primary" type="submit">

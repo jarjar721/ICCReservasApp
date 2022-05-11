@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CrearDispositivosComponent } from './crear-dispositivos/crear-dispositivos.component';
-import { CrearInstalacionComponent } from './crear-instalacion/crear-instalacion.component';
+import { CrearDispositivosComponent } from './dispositivos/crear-dispositivos/crear-dispositivos.component';
+import { CrearInstalacionComponent } from './instalaciones/crear-instalacion/crear-instalacion.component';
 
-import { DispositivosComponent } from './dispositivos/dispositivos.component';
+import { DispositivosComponent } from './dispositivos/index/dispositivos.component';
 import { InstalacionesComponent } from './instalaciones/index/instalaciones.component';
 
 const routes: Routes = [

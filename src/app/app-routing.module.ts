@@ -144,7 +144,8 @@ const routes: Routes = [
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking',
-      useHash: false
+      useHash: false,
+      onSameUrlNavigation: 'reload'
       // relativeLinkResolution: 'legacy'
     })
   ],

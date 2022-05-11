@@ -19,10 +19,10 @@ import {
 import { IconModule } from '@coreui/icons-angular';
 
 import { ActivosRoutingModule } from './activos-routing.module';
-import { DispositivosComponent } from './dispositivos/dispositivos.component';
+import { DispositivosComponent } from './dispositivos/index/dispositivos.component';
 import { InstalacionesComponent } from './instalaciones/index/instalaciones.component';
-import { CrearDispositivosComponent } from './crear-dispositivos/crear-dispositivos.component';
-import { CrearInstalacionComponent } from './crear-instalacion/crear-instalacion.component';
+import { CrearDispositivosComponent } from './dispositivos/crear-dispositivos/crear-dispositivos.component';
+import { CrearInstalacionComponent } from './instalaciones/crear-instalacion/crear-instalacion.component';
 
 
 @NgModule({

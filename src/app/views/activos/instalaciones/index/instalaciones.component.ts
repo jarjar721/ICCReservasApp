@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 
 import { Instalacion } from 'src/app/models/instalacion.model';
@@ -18,7 +19,11 @@ export class InstalacionesComponent implements OnInit, OnDestroy {
 
   dtTrigger: Subject<void> = new Subject<void>();
 
-  constructor(public service: InstalacionService, private router: Router) { }
+  constructor(
+    public service: InstalacionService,
+    private router: Router,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.getInstalacionesList();
@@ -49,6 +54,18 @@ export class InstalacionesComponent implements OnInit, OnDestroy {
 
   crearInstalacion() {
     this.router.navigate(["/activos/crear-instalacion"]);
+  }
+
+  deleteInstalacion(id: any) {
+    this.service.deleteInstalacion(id.toString()).subscribe(
+      res => {
+        this.toastr.success('La instalación ha sido eliminada exitosamente','Instalación eliminada');
+        this.getInstalacionesList();
+      },
+      err => {
+        this.toastr.error(err.error.Message, '¡Ups!');
+      }
+    )
   }
 
   ngOnDestroy(): void {

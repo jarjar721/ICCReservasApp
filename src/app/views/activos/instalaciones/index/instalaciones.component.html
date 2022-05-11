@@ -33,7 +33,7 @@
               <td>{{ instalacion.piso }}</td>
               <td>{{ instalacion.status }}</td>
               <td>
-                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
+                <button (click)="deleteInstalacion(instalacion.id)" cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
                   Eliminar
                 </button>
               </td>
