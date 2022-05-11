@@ -21,6 +21,7 @@ export class DispositivosComponent implements OnDestroy, OnInit {
   constructor(private router: Router, public service: DispositivoService) { }
 
   ngOnInit(): void {
+    this.getDispositivosList();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -28,7 +29,6 @@ export class DispositivosComponent implements OnDestroy, OnInit {
         url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
       }
     };
-    this.getDispositivosList();
   }
 
   getDispositivosList() {
