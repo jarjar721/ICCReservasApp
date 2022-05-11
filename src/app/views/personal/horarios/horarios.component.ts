@@ -21,7 +21,7 @@ export class HorariosComponent implements OnInit {
   horariosUpperElementary: Horario[] = [];
   horariosLowerElementary: Horario[] = [];
 
-  eventsLE = []
+  eventsLE: Array<any> = []
   eventsUE: Array<any> = []
   eventsMS: Array<any> = []
   eventsHS: Array<any> = []
@@ -202,15 +202,12 @@ export class HorariosComponent implements OnInit {
   setCalendarEvents(events: any, horarios: Horario[]) {
     horarios.forEach(x => {
       events.push({
+        id: x.id.toString(),
         title: x.numero.toString(),
         startTime: x.horaInicio,
         endTime: x.horaFin
       })
     });
-    
-  }
-
-  getLowerElementaryEvents() {
     
   }
 

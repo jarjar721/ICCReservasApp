@@ -1,0 +1,57 @@
+<div class="fade-in">
+    <c-card class="mb-4">
+      <c-card-header>
+        Instalaciones
+        <button 
+        cButton class="me-1" variant="outline" size="sm" style="float: right;"
+        (click)="crearInstalacion()"
+        >
+          Crear
+        </button>
+      </c-card-header>
+      <c-card-body>
+        <table datatable [dtOptions]="dtOptions" class="row-border hover">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Capacidad</th>
+              <th>Edificio</th>
+              <th>Piso</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let instalacion of instalaciones">
+              <td><a routerLink="{{ instalacion.id }}">{{ instalacion.codigo }}</a></td>
+              <td>{{ instalacion.nombre }}</td>
+              <td>{{ instalacion.tipo }}</td>
+              <td>{{ instalacion.capacidad }}</td>
+              <td>{{ instalacion.edificio }}</td>
+              <td>{{ instalacion.piso }}</td>
+              <td>{{ instalacion.status }}</td>
+              <td>
+                <button cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Capacidad</th>
+              <th>Edificio</th>
+              <th>Piso</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </tfoot>
+        </table>        
+      </c-card-body>
+    </c-card>
+</div>

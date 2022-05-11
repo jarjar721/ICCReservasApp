@@ -5,7 +5,7 @@ import { CrearDispositivosComponent } from './crear-dispositivos/crear-dispositi
 import { CrearInstalacionComponent } from './crear-instalacion/crear-instalacion.component';
 
 import { DispositivosComponent } from './dispositivos/dispositivos.component';
-import { InstalacionesComponent } from './instalaciones/instalaciones.component';
+import { InstalacionesComponent } from './instalaciones/index/instalaciones.component';
 
 const routes: Routes = [
   {
