@@ -3,6 +3,8 @@ import { UserService } from 'src/app/shared/user.service';
 import { Usuario } from "../../../../models/usuario.model";
 
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,7 +19,11 @@ export class UsuariosComponent implements OnDestroy, OnInit {
 
   dtTrigger: Subject<void> = new Subject<void>();
 
-  constructor(public service: UserService) { }
+  constructor(
+    public service: UserService,
+    private router: Router,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.getUserList();
@@ -42,6 +48,22 @@ export class UsuariosComponent implements OnDestroy, OnInit {
         if (err.status == 400) {
           console.log(err);
         }
+      }
+    )
+  }
+
+  crearUser() {
+    this.router.navigate(["/personal/crear-user"]);
+  }
+
+  deleteUser(id: any) {
+    this.service.deleteUser(id.toString()).subscribe(
+      res => {
+        this.toastr.success('El usuario ha sido eliminado exitosamente','Usuario eliminado');
+        this.getUserList();
+      },
+      err => {
+        this.toastr.error(err.error.Message, '¡Ups!');
       }
     )
   }

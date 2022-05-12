@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 
 import { Dispositivo } from 'src/app/models/dispositivo.model';
@@ -18,7 +19,11 @@ export class DispositivosComponent implements OnDestroy, OnInit {
 
   dtTrigger: Subject<void> = new Subject<void>();
 
-  constructor(private router: Router, public service: DispositivoService) { }
+  constructor(
+    private router: Router,
+    public service: DispositivoService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.getDispositivosList();
@@ -49,6 +54,18 @@ export class DispositivosComponent implements OnDestroy, OnInit {
 
   crearDispositivo() {
     this.router.navigate(["/activos/crear-dispositivo"]);
+  }
+
+  deleteDispositivo(id: any) {
+    this.service.deleteDispositivo(id.toString()).subscribe(
+      res => {
+        this.toastr.success('La instalación ha sido eliminada exitosamente','Instalación eliminada');
+        this.dispositivos = this.dispositivos.filter(item => item.id !== id);
+      },
+      err => {
+        this.toastr.error(err.error.Message, '¡Ups!');
+      }
+    )
   }
 
   ngOnDestroy(): void {

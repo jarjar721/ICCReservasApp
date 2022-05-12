@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Dispositivo } from 'src/app/models/dispositivo.model';
 import { DispositivoService } from 'src/app/shared/dispositivo.service';
 
 @Component({
-  selector: 'app-crear-dispositivos',
-  templateUrl: './crear-dispositivos.component.html',
-  styleUrls: ['./crear-dispositivos.component.scss']
+  selector: 'app-edit-dispositivo',
+  templateUrl: './edit-dispositivo.component.html',
+  styleUrls: ['./edit-dispositivo.component.scss']
 })
-export class CrearDispositivosComponent implements OnInit {
+export class EditDispositivoComponent implements OnInit {
 
   imageSrc = [
     'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1607923e7e2%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1607923e7e2%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.9296875%22%20y%3D%22217.75625%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E',
@@ -29,99 +29,53 @@ export class CrearDispositivosComponent implements OnInit {
   
   slides: any[] = [];
 
-  createDispositivoModel = this.formBuilder.group({
-    Marca: ['', Validators.required],
-    Modelo: ['', Validators.required],
-    Tipo: ['', Validators.required],
-    Serial: ['', Validators.required],
-    Uso: ['', Validators.required],
-    Ubicacion: ['', Validators.required],
-    Observacion: ['', Validators.required]
-  });
+  statuses: Array<any> = [
+    {id: 1, name: "Habilitado"},
+    {id: 2, name: "Deshabilitado"}
+  ];
+
+  editDispositivoModel!: FormGroup;
+  id!: String;
+  dispositivo!: Dispositivo;
 
   constructor(
-    private domSanitizer: DomSanitizer,
-    private formBuilder: FormBuilder,
     public service: DispositivoService,
+    private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
-  ) {
-    this.slides[0] = [
-      {
-        id: 0,
-        src: domSanitizer.bypassSecurityTrustUrl(this.imageSrc[0]),
-        title: 'First slide',
-        subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-      },
-      {
-        id: 1,
-        src: domSanitizer.bypassSecurityTrustUrl(this.imageSrc[1]),
-        title: 'Second slide',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-      },
-      {
-        id: 2,
-        src: domSanitizer.bypassSecurityTrustUrl(this.imageSrc[2]),
-        title: 'Third slide',
-        subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-      }
-    ];
-
-    this.slides[1] = [
-      {
-        id: 0,
-        src: this.imageSrc[3],
-        title: 'First slide',
-        subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-      },
-      {
-        id: 1,
-        src: this.imageSrc[4],
-        title: 'Second slide',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-      },
-      {
-        id: 2,
-        src: this.imageSrc[5],
-        title: 'Third slide',
-        subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-      }
-    ];
-
-    this.slides[2] = [
-      {
-        id: 0,
-        src: domSanitizer.bypassSecurityTrustUrl(this.slidesLight[0]),
-        title: 'First slide',
-        subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-      },
-      {
-        id: 1,
-        src: domSanitizer.bypassSecurityTrustUrl(this.slidesLight[1]),
-        title: 'Second slide',
-        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-      },
-      {
-        id: 2,
-        src: domSanitizer.bypassSecurityTrustUrl(this.slidesLight[2]),
-        title: 'Third slide',
-        subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-      }
-    ];
-
-  }
+    ) { }
 
   ngOnInit(): void {
-    this.createDispositivoModel.reset();
+    this.id = this.route.snapshot.params['id'];
+
+    this.service.getDispositivoDetails(this.id).subscribe(
+      res => {
+        this.dispositivo = (res as any)
+        console.log(this.dispositivo);
+
+        this.editDispositivoModel = new FormGroup({
+          Marca: new FormControl(['', Validators.required]),
+          Modelo: new FormControl(['', Validators.required]),
+          Tipo: new FormControl(['', Validators.required]),
+          Serial: new FormControl(['', Validators.required]),
+          Uso: new FormControl(['', Validators.required]),
+          Ubicacion: new FormControl(['', Validators.required]),
+          Observacion: new FormControl(['', Validators.required]),
+          Status: new FormControl(['', Validators.required])
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   onSubmit() {
-    this.service.createDispositivo(this.createDispositivoModel).subscribe(
+    this.service.editDispositivo(this.id, this.editDispositivoModel).subscribe(
       res => {
-        this.createDispositivoModel.reset();
         this.router.navigate(['/activos/dispositivos']);
 
-        this.toastr.success('El dispositivo se ha creado exitosamente','Dispositivo creado');
+        this.toastr.success('El dispositivo se ha modificado exitosamente','Dispositivo modificado');
       },
       err => {
         this.toastr.error(err.error.Message, '¡Ups!');
@@ -131,11 +85,15 @@ export class CrearDispositivosComponent implements OnInit {
 
   onReset() {
     this.router.navigate(['/activos/dispositivos']);
-    this.createDispositivoModel.reset();
   }
 
   onItemChange($event: any): void {
     console.log('Carousel onItemChange', $event);
+  }
+
+  selectChangeHandler (event: any) {
+    //update the ui
+    this.editDispositivoModel.value.Status = event.target.value;
   }
 
 }

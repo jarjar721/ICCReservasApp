@@ -16,6 +16,10 @@ export class InstalacionService {
     return this._http.get<Instalacion[]>(this.BaseURI+'Instalaciones');
   }
 
+  getInstalacionDetails(id: String) {
+    return this._http.get(this.BaseURI+'Instalaciones/Details/'+id);
+  }
+
   createInstalacion(createInstalacionModel: FormGroup) {
     const body = {
       Codigo: createInstalacionModel.value.Codigo,
@@ -31,7 +35,7 @@ export class InstalacionService {
   }
 
   deleteInstalacion(id: String) {
-    return this._http.delete(this.BaseURI + 'Instalaciones/Delete/'+`${id}`);
+    return this._http.delete(this.BaseURI + 'Instalaciones/Delete/'+id);
   }
   
 }

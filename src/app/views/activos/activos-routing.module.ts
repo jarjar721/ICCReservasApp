@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CrearDispositivosComponent } from './dispositivos/crear-dispositivos/crear-dispositivos.component';
 import { CrearInstalacionComponent } from './instalaciones/crear-instalacion/crear-instalacion.component';
 
+import { EditDispositivoComponent } from './dispositivos/edit-dispositivo/edit-dispositivo.component';
+
 import { DispositivosComponent } from './dispositivos/index/dispositivos.component';
 import { InstalacionesComponent } from './instalaciones/index/instalaciones.component';
 
@@ -23,6 +25,13 @@ const routes: Routes = [
         component: DispositivosComponent,
         data: {
           title: 'Dispositivos',
+        },
+      },
+      {
+        path: 'dispositivos/edit-dispositivo/:id',
+        component: EditDispositivoComponent,
+        data: {
+          title: 'Editar Dispositivo',
         },
       },
       {

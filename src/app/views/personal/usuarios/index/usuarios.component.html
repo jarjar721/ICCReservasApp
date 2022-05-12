@@ -2,6 +2,12 @@
   <c-card class="mb-4">
     <c-card-header>
       Usuarios
+      <button 
+        cButton class="me-1" variant="outline" size="sm" style="float: right;"
+        (click)="crearUser()"
+        >
+          Crear
+        </button>
     </c-card-header>
     <c-card-body>
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
@@ -10,6 +16,7 @@
             <th>Empleado</th>
             <th>Email</th>
             <th>Username</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +24,11 @@
             <td><a routerLink="{{ usuario.id }}">{{ usuario.names }} {{ usuario.lastNames }}</a></td>
             <td>{{ usuario.email }}</td>
             <td>{{ usuario.userName }}</td>
+            <td>
+              <button (click)="deleteUser(usuario.id)" cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
+                Eliminar
+              </button>
+            </td>
           </tr>
         </tbody>
         <tfoot>
@@ -24,6 +36,7 @@
             <th>Empleado</th>
             <th>Email</th>
             <th>Username</th>
+            <th>Acciones</th>
           </tr>
         </tfoot>
       </table>   

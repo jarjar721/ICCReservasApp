@@ -1,12 +1,12 @@
 <div class="fade-in">
     <c-card class="mb-4">
       <c-card-header>
-        Nuevo Dispositivo
+        Modificar Dispositivo
       </c-card-header>
       <c-card-body>
           <div class="row">
             <form #customStylesForm="ngForm"
-                [formGroup]="createDispositivoModel"
+                [formGroup]="editDispositivoModel"
                 (ngSubmit)="onSubmit()"
                 cForm
                 class="row g-3 needs-validation"
@@ -16,44 +16,52 @@
                     <div class="row">
                         <c-col>
                             <label cLabel>Serial</label>
-                            <input formControlName="Serial" cFormControl required type="text" />
-                            <label class="text-danger" *ngIf="createDispositivoModel.get('Serial')?.touched && createDispositivoModel.get('Serial')?.errors?.['required']">Campo requerido</label>
+                            <input formControlName="Serial" cFormControl required type="text" [(ngModel)]="dispositivo.serial"/>
+                            <label class="text-danger" *ngIf="editDispositivoModel.get('Serial')?.touched && editDispositivoModel.get('Serial')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                         <c-col>
                             <label cLabel>Tipo</label>
-                            <input formControlName="Tipo" cFormControl required type="text" />
-                            <label class="text-danger" *ngIf="createDispositivoModel.get('Tipo')?.touched && createDispositivoModel.get('Tipo')?.errors?.['required']">Campo requerido</label>
+                            <input formControlName="Tipo" cFormControl required type="text" [(ngModel)]="dispositivo.tipo"/>
+                            <label class="text-danger" *ngIf="editDispositivoModel.get('Tipo')?.touched && editDispositivoModel.get('Tipo')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                     </div>
                     <div class="row">
                         <c-col>
                             <label cLabel>Modelo</label>
-                            <input formControlName="Modelo" cFormControl required type="text" />
-                            <label class="text-danger" *ngIf="createDispositivoModel.get('Modelo')?.touched && createDispositivoModel.get('Modelo')?.errors?.['required']">Campo requerido</label>
+                            <input formControlName="Modelo" cFormControl required type="text" [(ngModel)]="dispositivo.modelo"/>
+                            <label class="text-danger" *ngIf="editDispositivoModel.get('Modelo')?.touched && editDispositivoModel.get('Modelo')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                         <c-col>
                             <label cLabel>Marca</label>
-                            <input formControlName="Marca" cFormControl required type="text" />
-                            <label class="text-danger" *ngIf="createDispositivoModel.get('Marca')?.touched && createDispositivoModel.get('Marca')?.errors?.['required']">Campo requerido</label>
+                            <input formControlName="Marca" cFormControl required type="text" [(ngModel)]="dispositivo.marca"/>
+                            <label class="text-danger" *ngIf="editDispositivoModel.get('Marca')?.touched && editDispositivoModel.get('Marca')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                    </div>
+                    <div class="row">
+                        <c-col>
+                            <label cLabel>Ubicación</label>
+                            <input formControlName="Ubicacion" cFormControl required type="text" [(ngModel)]="dispositivo.ubicacion"/>
+                            <label class="text-danger" *ngIf="editDispositivoModel.get('Ubicacion')?.touched && editDispositivoModel.get('Ubicacion')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                     </div>
                     <div class="row">
                         <c-col>
                             <label cLabel>Uso</label>
-                            <input formControlName="Uso" cFormControl required type="text" />
-                            <label class="text-danger" *ngIf="createDispositivoModel.get('Uso')?.touched && createDispositivoModel.get('Uso')?.errors?.['required']">Campo requerido</label>
+                            <input formControlName="Uso" cFormControl required type="text" [(ngModel)]="dispositivo.uso"/>
+                            <label class="text-danger" *ngIf="editDispositivoModel.get('Uso')?.touched && editDispositivoModel.get('Uso')?.errors?.['required']">Campo requerido</label>
                         </c-col>
                         <c-col>
-                            <label cLabel>Ubicación</label>
-                            <input formControlName="Ubicacion" cFormControl required type="text" />
-                            <label class="text-danger" *ngIf="createDispositivoModel.get('Ubicacion')?.touched && createDispositivoModel.get('Ubicacion')?.errors?.['required']">Campo requerido</label>
+                            <label cLabel>Estado</label>
+                            <select formControlName="Status" [(ngModel)]="dispositivo.status" cSelect>
+                                <option *ngFor="let item of statuses" [ngValue]="item.id">{{ item.name }}</option>
+                            </select>
                         </c-col>
                     </div>
                     
                     <c-col>
                         <label cLabel >Observaciones</label>
-                        <textarea formControlName="Observacion" cFormControl rows="3"></textarea>
-                        <label class="text-danger" *ngIf="createDispositivoModel.get('Observacion')?.touched && createDispositivoModel.get('Observacion')?.errors?.['required']">Campo requerido</label>
+                        <textarea formControlName="Observacion" [(ngModel)]="dispositivo.observacion" cFormControl rows="3"></textarea>
+                        <label class="text-danger" *ngIf="editDispositivoModel.get('Observacion')?.touched && editDispositivoModel.get('Observacion')?.errors?.['required']">Campo requerido</label>
                     </c-col>
 
                 </div>
@@ -88,7 +96,7 @@
                         </button>
                         <button cButton color="primary" type="submit">
                             <svg cIcon class="me-2 icon" name="cil-check"></svg>
-                            Crear
+                            Guardar
                         </button>
                     </c-col>
 

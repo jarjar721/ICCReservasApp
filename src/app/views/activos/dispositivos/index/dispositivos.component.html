@@ -19,16 +19,22 @@
               <th>Modelo</th>
               <th>Uso</th>
               <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let dispositivo of dispositivos">
-              <td><a routerLink="{{ dispositivo.id }}">{{ dispositivo.serial }}</a></td>
+              <td><a routerLink="edit-dispositivo/{{ dispositivo.id }}">{{ dispositivo.serial }}</a></td>
               <td>{{ dispositivo.tipo }}</td>
               <td>{{ dispositivo.marca }}</td>
               <td>{{ dispositivo.modelo }}</td>
               <td>{{ dispositivo.uso }}</td>
               <td>{{ dispositivo.status }}</td>
+              <td>
+                <button (click)="deleteDispositivo(dispositivo.id)" cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
+                  Eliminar
+                </button>
+              </td>
             </tr>
           </tbody>
           <tfoot>
@@ -39,6 +45,7 @@
               <th>Modelo</th>
               <th>Uso</th>
               <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </tfoot>
         </table>        

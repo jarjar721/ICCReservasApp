@@ -60,7 +60,7 @@ export class InstalacionesComponent implements OnInit, OnDestroy {
     this.service.deleteInstalacion(id.toString()).subscribe(
       res => {
         this.toastr.success('La instalación ha sido eliminada exitosamente','Instalación eliminada');
-        this.getInstalacionesList();
+        this.instalaciones = this.instalaciones.filter(item => item.id !== id);
       },
       err => {
         this.toastr.error(err.error.Message, '¡Ups!');

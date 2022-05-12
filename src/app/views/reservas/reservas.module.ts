@@ -22,7 +22,7 @@ import {
 import { IconModule } from '@coreui/icons-angular';
 
 import { ReservasRoutingModule } from './reservas-routing.module';
-import { ReservasComponent } from './reservas.component';
+import { ReservasComponent } from './calendario/reservas.component';
 import { CrearReservaComponent } from './crear-reserva/crear-reserva.component'
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
