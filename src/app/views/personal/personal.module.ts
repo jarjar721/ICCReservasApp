@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Full Calendar
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
@@ -20,16 +21,17 @@ import {
   TableModule,
   TabsModule
 } from '@coreui/angular';
+import { IconModule } from '@coreui/icons-angular';
 
 import { PersonalRoutingModule } from './personal-routing.module';
-import { UsuariosComponent } from './usuarios/index/usuarios.component';
-import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
 
+import { UsuariosComponent } from './usuarios/index/usuarios.component';
 import { HorariosComponent } from './horarios/index/horarios.component';
 import { MateriasComponent } from './materias/materias.component';
+
+import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
+
 import { EditUsuarioComponent } from './usuarios/edit-usuario/edit-usuario.component';
-
-
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -52,7 +54,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ButtonModule,
     CardModule,
     FormModule,
+    FormsModule, 
+    ReactiveFormsModule,
     GridModule,
+    IconModule,
     NavModule,
     ProgressModule,
     TableModule,

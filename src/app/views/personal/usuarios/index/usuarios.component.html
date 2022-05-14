@@ -21,7 +21,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let usuario of usuarios">
-            <td><a routerLink="{{ usuario.id }}">{{ usuario.names }} {{ usuario.lastNames }}</a></td>
+            <td><a routerLink="edit-usuario/{{ usuario.id }}">{{ usuario.names }} {{ usuario.lastNames }}</a></td>
             <td>{{ usuario.email }}</td>
             <td>{{ usuario.userName }}</td>
             <td>

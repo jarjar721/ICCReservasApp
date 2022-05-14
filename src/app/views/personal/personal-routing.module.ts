@@ -4,6 +4,7 @@ import { HorariosComponent } from './horarios/index/horarios.component';
 import { MateriasComponent } from './materias/materias.component';
 import { UsuariosComponent } from './usuarios/index/usuarios.component';
 import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
+import { EditUsuarioComponent } from './usuarios/edit-usuario/edit-usuario.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,13 @@ const routes: Routes = [
         component: UsuariosComponent,
         data: {
           title: 'Usuarios',
+        },
+      },
+      {
+        path: 'usuarios/edit-usuario/:id',
+        component: EditUsuarioComponent,
+        data: {
+          title: 'Editar Usuario',
         },
       },
       {

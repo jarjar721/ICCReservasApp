@@ -1,1 +1,56 @@
-<p>edit-usuario works!</p>
+<div class="fade-in">
+    <c-card class="mb-4">
+      <c-card-header>
+        Modificar Usuario
+      </c-card-header>
+      <c-card-body>
+          <div class="row">
+            <form #customStylesForm="ngForm"
+                [formGroup]="editUserModel"
+                (ngSubmit)="onSubmit()"
+                cForm
+                class="row g-3 needs-validation"
+                style="margin-top: 0;"
+            >
+                <div class="col-6">
+                    <c-col>
+                        <label cLabel>Nombres</label>
+                        <input formControlName="Names" cFormControl required type="text" [(ngModel)]="user.names"/>
+                        <label class="text-danger" *ngIf="editUserModel.get('Names')?.touched && editUserModel.get('Names')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col>
+                        <label cLabel >Apellidos</label>
+                        <input formControlName="LastNames" cFormControl required type="text" [(ngModel)]="user.lastNames"/>
+                        <label class="text-danger" *ngIf="editUserModel.get('LastNames')?.touched && editUserModel.get('LastNames')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col>
+                        <label cLabel >Correo electrónico</label>
+                        <input formControlName="Email" cFormControl required type="email" [(ngModel)]="user.email"/>
+                        <label class="text-danger" *ngIf="editUserModel.get('Email')?.touched && editUserModel.get('Email')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col>
+                        <label cLabel >Username</label>
+                        <input formControlName="UserName" cFormControl required type="text" [(ngModel)]="user.userName"/>
+                        <label class="text-danger" *ngIf="editUserModel.get('UserName')?.touched && editUserModel.get('UserName')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col>
+                        <label cLabel>Estado</label>
+                        <select formControlName="Status" [(ngModel)]="user.status" cSelect>
+                            <option *ngFor="let item of statuses" [ngValue]="item.id">{{ item.name }}</option>
+                        </select>
+                    </c-col>
+                    <c-col style="float: right; padding-top: 1em;">
+                        <button (click)="onReset()" cButton class="me-1" color="secondary" type="reset">
+                            Cancelar
+                        </button>
+                        <button cButton color="primary" type="submit">
+                            <svg cIcon class="me-2 icon" name="cil-check"></svg>
+                            Guardar
+                        </button>
+                    </c-col>
+                </div>
+            </form>
+          </div>
+      </c-card-body>
+    </c-card>
+</div>

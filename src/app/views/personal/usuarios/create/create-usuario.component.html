@@ -1,1 +1,50 @@
-<p>create works!</p>
+<div class="fade-in">
+    <c-card class="mb-4">
+      <c-card-header>
+        Nuevo Usuario
+      </c-card-header>
+      <c-card-body>
+          <div class="row">
+            <form #customStylesForm="ngForm"
+                [formGroup]="createUserModel"
+                (ngSubmit)="onSubmit()"
+                cForm
+                class="row g-3 needs-validation"
+                style="margin-top: 0;"
+            >
+                <div class="col-6">
+                    <c-col>
+                        <label cLabel>Nombres</label>
+                        <input formControlName="Names" cFormControl required type="text" />
+                        <label class="text-danger" *ngIf="createUserModel.get('Names')?.touched && createUserModel.get('Names')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col>
+                        <label cLabel >Apellidos</label>
+                        <input formControlName="LastNames" cFormControl required type="text" />
+                        <label class="text-danger" *ngIf="createUserModel.get('LastNames')?.touched && createUserModel.get('LastNames')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col>
+                        <label cLabel >Correo electrónico</label>
+                        <input formControlName="Email" cFormControl required type="email" />
+                        <label class="text-danger" *ngIf="createUserModel.get('Email')?.touched && createUserModel.get('Email')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col>
+                        <label cLabel >Username</label>
+                        <input formControlName="UserName" cFormControl required type="text" />
+                        <label class="text-danger" *ngIf="createUserModel.get('UserName')?.touched && createUserModel.get('UserName')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+                    <c-col style="float: right; padding-top: 1em;">
+                        <button (click)="onReset()" cButton class="me-1" color="secondary" type="reset">
+                            Cancelar
+                        </button>
+                        <button cButton color="primary" type="submit">
+                            <svg cIcon class="me-2 icon" name="cil-check"></svg>
+                            Crear
+                        </button>
+                    </c-col>
+                </div>
+            </form>
+          </div>
+      </c-card-body>
+    </c-card>
+</div>

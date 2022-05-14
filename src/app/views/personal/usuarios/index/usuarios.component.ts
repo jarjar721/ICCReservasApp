@@ -53,7 +53,7 @@ export class UsuariosComponent implements OnDestroy, OnInit {
   }
 
   crearUser() {
-    this.router.navigate(["/personal/crear-user"]);
+    this.router.navigate(["/personal/create-usuario"]);
   }
 
   deleteUser(id: any) {
