@@ -13,20 +13,20 @@ export class UserService {
 
   constructor(private _http: HttpClient) { }
 
-  getUserDetails(id: String) {
-    return this._http.get(this.BaseURI+'Usuarios/Details/'+id);
-  }
-
   getAllUsers() {
     return this._http.get<Usuario[]>(this.BaseURI+'Usuarios');
   }
 
-  createUser(createDispositivoModel: FormGroup) {
+  getUserDetails(id: String) {
+    return this._http.get(this.BaseURI+'Usuarios/Details/'+id);
+  }
+
+  createUser(createUserModel: FormGroup) {
     const body = {
-      Names: createDispositivoModel.value.Names,
-      LastNames: createDispositivoModel.value.LastNames,
-      Email: createDispositivoModel.value.Email,
-      UserName: createDispositivoModel.value.UserName
+      Names: createUserModel.value.Names,
+      LastNames: createUserModel.value.LastNames,
+      Email: createUserModel.value.Email,
+      UserName: createUserModel.value.UserName
     };
     return this._http.post(this.BaseURI + 'Usuarios/Create', body)
   }

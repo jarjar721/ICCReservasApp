@@ -46,7 +46,6 @@ export class DispositivoService {
       Observacion: editDispositivoModel.value.Observacion,
       Status: editDispositivoModel.value.Status
     };
-    console.log(body);
     return this._http.put(this.BaseURI + 'Dispositivos/Edit/'+id, body);
   }
 

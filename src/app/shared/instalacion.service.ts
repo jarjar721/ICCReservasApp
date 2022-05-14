@@ -46,7 +46,6 @@ export class InstalacionService {
       Descripcion: editInstalacionModel.value.Descripcion,
       Status: editInstalacionModel.value.Status
     };
-    console.log(body);
     return this._http.put(this.BaseURI + 'Instalaciones/Edit/'+id, body);
   }
 
