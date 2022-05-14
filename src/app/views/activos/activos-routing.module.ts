@@ -8,6 +8,7 @@ import { EditDispositivoComponent } from './dispositivos/edit-dispositivo/edit-d
 
 import { DispositivosComponent } from './dispositivos/index/dispositivos.component';
 import { InstalacionesComponent } from './instalaciones/index/instalaciones.component';
+import { EditInstalacionComponent } from './instalaciones/edit-instalacion/edit-instalacion.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,13 @@ const routes: Routes = [
         component: InstalacionesComponent,
         data: {
           title: 'Instalaciones',
+        },
+      },
+      {
+        path: 'instalaciones/edit-instalacion/:id',
+        component: EditInstalacionComponent,
+        data: {
+          title: 'Editar Instalación',
         },
       },
       {

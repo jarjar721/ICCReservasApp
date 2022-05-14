@@ -25,7 +25,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let instalacion of instalaciones">
-              <td><a routerLink="{{ instalacion.id }}">{{ instalacion.codigo }}</a></td>
+              <td><a routerLink="edit-instalacion/{{ instalacion.id }}">{{ instalacion.codigo }}</a></td>
               <td>{{ instalacion.nombre }}</td>
               <td>{{ instalacion.tipo }}</td>
               <td>{{ instalacion.capacidad }}</td>

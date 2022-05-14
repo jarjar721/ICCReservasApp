@@ -1,1 +1,108 @@
-<p>edit-instalacion works!</p>
+<div class="fade-in">
+    <c-card class="mb-4">
+      <c-card-header>
+        Nueva Instalación
+      </c-card-header>
+      <c-card-body>
+          <div class="row">
+            <form #customStylesForm="ngForm"
+                [formGroup]="editInstalacionModel"
+                (ngSubmit)="onSubmit()"
+                cForm
+                class="row g-3 needs-validation"
+                style="margin-top: 0;"
+            >
+                <div class="col-6">
+                    <div class="row">
+                        <c-col>
+                            <label cLabel >Nombre</label>
+                            <input formControlName="Nombre" cFormControl required type="text" [(ngModel)]="instalacion.nombre"/>
+                            <label class="text-danger" *ngIf="editInstalacionModel.get('Nombre')?.touched && editInstalacionModel.get('Nombre')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                    </div>
+                    <div class="row">
+                        <c-col>
+                            <label cLabel>Código</label>
+                            <input formControlName="Codigo" cFormControl required type="text" [(ngModel)]="instalacion.codigo"/>
+                            <label class="text-danger" *ngIf="editInstalacionModel.get('Codigo')?.touched && editInstalacionModel.get('Codigo')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                        <c-col>
+                            <label cLabel >Tipo</label>
+                            <input formControlName="Tipo" cFormControl required type="text" [(ngModel)]="instalacion.tipo"/>
+                            <label class="text-danger" *ngIf="editInstalacionModel.get('Tipo')?.touched && editInstalacionModel.get('Tipo')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                    </div>
+                    <div class="row">
+                        <c-col>
+                            <label cLabel >Edificio</label>
+                            <input formControlName="Edificio" cFormControl required type="text" [(ngModel)]="instalacion.edificio"/>
+                            <label class="text-danger" *ngIf="editInstalacionModel.get('Edificio')?.touched && editInstalacionModel.get('Edificio')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                        <c-col>
+                            <label cLabel >Piso</label>
+                            <input formControlName="Piso" cFormControl required type="text" [(ngModel)]="instalacion.piso"/>
+                            <label class="text-danger" *ngIf="editInstalacionModel.get('Piso')?.touched && editInstalacionModel.get('Piso')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                    </div>
+                    <div class="row">
+                        <c-col>
+                            <label cLabel >Capacidad</label>
+                            <input formControlName="Capacidad" cFormControl required type="number" [(ngModel)]="instalacion.capacidad"/>
+                            <label class="text-danger" *ngIf="editInstalacionModel.get('Capacidad')?.touched && editInstalacionModel.get('Capacidad')?.errors?.['required']">Campo requerido</label>
+                        </c-col>
+                        <c-col>
+                            <label cLabel>Estado</label>
+                            <select formControlName="Status" [(ngModel)]="instalacion.status" cSelect>
+                                <option *ngFor="let item of statuses" [ngValue]="item.id">{{ item.name }}</option>
+                            </select>
+                        </c-col>
+                    </div>
+                    
+                    <c-col>
+                        <label cLabel >Descripción</label>
+                        <textarea formControlName="Descripcion" cFormControl [(ngModel)]="instalacion.descripcion" required rows="3"></textarea>
+                        <label class="text-danger" *ngIf="editInstalacionModel.get('Descripción')?.touched && editInstalacionModel.get('Descripción')?.errors?.['required']">Campo requerido</label>
+                    </c-col>
+
+                </div>
+                <div class="col-6">
+                    <c-card>
+                        <c-carousel (itemChange)="onItemChange($event)" [interval]="0">
+                            <c-carousel-inner>
+                              <c-carousel-item *ngFor="let slide of slides[0]">
+                                <img
+                                  [src]="slide.src"
+                                  alt="{{slide.title}}"
+                                  class="d-block w-100"
+                                  loading="lazy"
+                                />
+                              </c-carousel-item>
+                            </c-carousel-inner>
+                            <c-carousel-control [routerLink] caption="Previous" direction="prev" i18n-caption></c-carousel-control>
+                            <c-carousel-control [routerLink] caption="Next" direction="next" i18n-caption></c-carousel-control>
+                        </c-carousel>
+                        <c-card-body>
+                            <h5 cCardTitle>Imágenes de la instalación</h5>
+                            <p cCardText>
+                                Cargue varias fotos de la instalación mostrando todas las fachas de interés.
+                            </p>
+                            <button cButton color="primary">Upload</button>
+                        </c-card-body>
+                    </c-card>
+
+                    <c-col style="float: right; padding-top: 1em;">
+                        <button (click)="onReset()" cButton class="me-1" color="secondary" type="reset">
+                            Cancelar
+                        </button>
+                        <button cButton color="primary" type="submit">
+                            <svg cIcon class="me-2 icon" name="cil-check"></svg>
+                            Guardar
+                        </button>
+                    </c-col>
+
+                </div>
+            </form>
+          </div>
+      </c-card-body>
+    </c-card>
+</div>

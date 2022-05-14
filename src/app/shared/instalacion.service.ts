@@ -34,6 +34,22 @@ export class InstalacionService {
     return this._http.post(this.BaseURI + 'Instalaciones/Create', body)
   }
 
+  editInstalacion(id: String, editInstalacionModel: FormGroup) {
+    const body = {
+      Id: id,
+      Codigo: editInstalacionModel.value.Codigo,
+      Nombre: editInstalacionModel.value.Nombre,
+      Tipo: editInstalacionModel.value.Tipo,
+      Capacidad: editInstalacionModel.value.Capacidad,
+      Edificio: editInstalacionModel.value.Edificio,
+      Piso: editInstalacionModel.value.Piso,
+      Descripcion: editInstalacionModel.value.Descripcion,
+      Status: editInstalacionModel.value.Status
+    };
+    console.log(body);
+    return this._http.put(this.BaseURI + 'Instalaciones/Edit/'+id, body);
+  }
+
   deleteInstalacion(id: String) {
     return this._http.delete(this.BaseURI + 'Instalaciones/Delete/'+id);
   }

@@ -31,6 +31,18 @@ export class UserService {
     return this._http.post(this.BaseURI + 'Usuarios/Create', body)
   }
 
+  editUser(id: String, editUserModel: FormGroup) {
+    const body = {
+      Id: id,
+      Names: editUserModel.value.Names,
+      LastNames: editUserModel.value.LastNames,
+      Email: editUserModel.value.Email,
+      UserName: editUserModel.value.UserName
+    };
+    console.log(body);
+    return this._http.put(this.BaseURI + 'Usuarios/Edit/'+id, body);
+  }
+
   deleteUser(id: String) {
     return this._http.delete(this.BaseURI + 'Usuarios/Delete/'+id);
   }
