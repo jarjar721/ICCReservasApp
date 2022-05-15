@@ -16,6 +16,10 @@ export class HorarioService {
     return this._http.get<Horario[]>(this.BaseURI+'Horarios');
   }
 
+  getHorarioByNivel(nivel: String) {
+    return this._http.get(this.BaseURI+'Horarios/Nivel/'+nivel);
+  }
+
   getHorarioDetails(id: String) {
     return this._http.get(this.BaseURI+'Horarios/Details/'+id);
   }

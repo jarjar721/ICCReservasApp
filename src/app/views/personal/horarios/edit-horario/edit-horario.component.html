@@ -1,0 +1,24 @@
+<div class="fade-in">
+    <c-card class="mb-4">
+      <c-card-header>
+        {{ nivelTitle }}
+      </c-card-header>
+      <c-card-body>
+        <full-calendar [options]="calendarOptions"></full-calendar>
+      </c-card-body>
+    </c-card>
+</div>
+
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>{{ modalTitle }}</h5>
+    <button (click)="toggleLiveDemo()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    Woohoo, you are reading this text in a modal!
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleLiveDemo()" cButton color="secondary">Cerrar</button>
+    <button cButton color="primary">Guardar</button>
+  </c-modal-footer>
+</c-modal>

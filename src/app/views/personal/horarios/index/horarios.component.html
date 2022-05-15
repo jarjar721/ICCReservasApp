@@ -2,6 +2,12 @@
     <c-card class="mb-4">
       <c-card-header>
         Lower Elementary
+        <button 
+          cButton class="me-1" variant="outline" size="sm" style="float: right;"
+          routerLink="edit-horario/LE"
+          >
+          Editar
+        </button>
       </c-card-header>
       <c-card-body>
         <full-calendar [options]="calendarLowerElementaryOptions"></full-calendar>
@@ -11,6 +17,12 @@
     <c-card class="mb-4">
       <c-card-header>
         Upper Elementary
+        <button 
+          cButton class="me-1" variant="outline" size="sm" style="float: right;"
+          routerLink="edit-horario/UE"
+          >
+          Editar
+        </button>
       </c-card-header>
       <c-card-body>
         <full-calendar [options]="calendarUpperElementaryOptions"></full-calendar>
@@ -20,6 +32,12 @@
     <c-card class="mb-4">
       <c-card-header>
         Middle School
+        <button 
+          cButton class="me-1" variant="outline" size="sm" style="float: right;"
+          routerLink="edit-horario/MS"
+          >
+          Editar
+        </button>
       </c-card-header>
       <c-card-body>
         <full-calendar [options]="calendarMiddleOptions"></full-calendar>
@@ -29,6 +47,12 @@
     <c-card class="mb-4">
       <c-card-header>
         High School
+        <button 
+          cButton class="me-1" variant="outline" size="sm" style="float: right;"
+          routerLink="edit-horario/HS"
+          >
+          Editar
+        </button>
       </c-card-header>
       <c-card-body>
         <full-calendar [options]="calendarHighOptions"></full-calendar>

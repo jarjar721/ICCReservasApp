@@ -5,6 +5,7 @@ import { MateriasComponent } from './materias/materias.component';
 import { UsuariosComponent } from './usuarios/index/usuarios.component';
 import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
 import { EditUsuarioComponent } from './usuarios/edit-usuario/edit-usuario.component';
+import { EditHorarioComponent } from './horarios/edit-horario/edit-horario.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,13 @@ const routes: Routes = [
         component: HorariosComponent,
         data: {
           title: 'Horarios',
+        },
+      },
+      {
+        path: 'horarios/edit-horario/:nivel',
+        component: EditHorarioComponent,
+        data: {
+          title: 'Editar Horario',
         },
       },
       {

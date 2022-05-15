@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,6 +16,7 @@ import {
   CardModule,
   FormModule,
   GridModule,
+  ModalModule,
   NavModule,
   ProgressModule,
   TableModule,
@@ -32,6 +33,7 @@ import { MateriasComponent } from './materias/materias.component';
 import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
 
 import { EditUsuarioComponent } from './usuarios/edit-usuario/edit-usuario.component';
+import { EditHorarioComponent } from './horarios/edit-horario/edit-horario.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -45,6 +47,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     HorariosComponent,
     MateriasComponent,
     EditUsuarioComponent,
+    EditHorarioComponent,
   ],
   imports: [
     CommonModule,
@@ -58,12 +61,14 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ReactiveFormsModule,
     GridModule,
     IconModule,
+    ModalModule,
     NavModule,
     ProgressModule,
     TableModule,
     TabsModule,
     FullCalendarModule, // register FullCalendar with you app
     DataTablesModule
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PersonalModule { }

@@ -32,16 +32,7 @@ export class HorariosComponent implements OnInit {
     initialView: 'timeGridWeek',
     headerToolbar: {
       start: 'title',
-      center: '',
-      end: 'Editar'
-    },
-    customButtons: {
-      Editar: {
-        text: 'Editar',
-        click: function() {
-          alert('clicked Editar Lower Elementary button!');
-        }
-      }
+      center: ''
     },
     slotLabelFormat: {
       hour: 'numeric',
@@ -63,16 +54,7 @@ export class HorariosComponent implements OnInit {
     initialView: 'timeGridWeek',
     headerToolbar: {
       start: 'title',
-      center: '',
-      end: 'Editar'
-    },
-    customButtons: {
-      Editar: {
-        text: 'Editar',
-        click: function() {
-          alert('clicked Editar Upper Elementary button!');
-        }
-      }
+      center: ''
     },
     slotLabelFormat: {
       hour: 'numeric',
@@ -94,16 +76,7 @@ export class HorariosComponent implements OnInit {
     initialView: 'timeGridWeek',
     headerToolbar: {
       start: 'title',
-      center: '',
-      end: 'Editar'
-    },
-    customButtons: {
-      Editar: {
-        text: 'Editar',
-        click: function() {
-          alert('clicked Editar Middle School button!');
-        }
-      }
+      center: ''
     },
     slotLabelFormat: {
       hour: 'numeric',
@@ -125,16 +98,7 @@ export class HorariosComponent implements OnInit {
     initialView: 'timeGridWeek',
     headerToolbar: {
       start: 'title',
-      center: '',
-      end: 'Editar'
-    },
-    customButtons: {
-      Editar: {
-        text: 'Editar',
-        click: function() {
-          alert('clicked Editar High School button!');
-        }
-      }
+      center: ''
     },
     slotLabelFormat: {
       hour: 'numeric',
@@ -203,12 +167,11 @@ export class HorariosComponent implements OnInit {
     horarios.forEach(x => {
       events.push({
         id: x.id.toString(),
-        title: x.numero.toString(),
+        title: "Hora #" + x.numero.toString(),
         startTime: x.horaInicio,
         endTime: x.horaFin
       })
     });
-    
   }
 
 }
