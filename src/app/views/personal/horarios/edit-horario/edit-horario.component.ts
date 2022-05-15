@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Horario } from 'src/app/models/horario.model';
 import { HorarioService } from 'src/app/shared/horario.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-horario',
@@ -23,6 +24,19 @@ export class EditHorarioComponent implements OnInit {
 
   horarios: Horario[] = [];
   events: Array<any> = [];
+
+  nombre!: string;
+  startTime!: Date;
+  endTime!: Date;
+
+  editHorarioModel!: {
+    Id: string,
+    Nivel: string,
+    Numero: number,
+    Nombre: string,
+    HoraInicio: string,
+    HoraFin: string
+  };
 
   calendarOptions: CalendarOptions = {
     locale: esLocale,
@@ -47,6 +61,7 @@ export class EditHorarioComponent implements OnInit {
     expandRows: true,
     slotLabelInterval: '00:30',
     eventResizableFromStart: true,
+    eventOverlap: false,
     eventClick: this.handleEventClick.bind(this), // bind is important!
   };
 
@@ -94,7 +109,7 @@ export class EditHorarioComponent implements OnInit {
       events.push({
         groupId: x.id.toString(),
         id: x.numero.toString(),
-        title: "Hora #" + x.numero.toString(),
+        title: x.nombre,
         startTime: x.horaInicio,
         endTime: x.horaFin
       })
@@ -102,14 +117,35 @@ export class EditHorarioComponent implements OnInit {
   }
 
   public eventClicked!: Horario;
-  modalTitle!: string
 
   handleEventClick(arg: any) {
     console.log(arg)
-    this.eventClicked = new Horario(arg.event.groupId, arg.event.id, this.nivel, arg.event.startStr, arg.event.endStr)
+
+    this.nombre = arg.event.title;
+    var startDate = new Date(arg.event.startStr);
+    var endDate = new Date(arg.event.endStr);
+    this.startTime = startDate;
+    this.endTime = endDate;
+
+    this.eventClicked = new Horario(
+      arg.event.groupId, 
+      arg.event.id, 
+      this.nivel,
+      arg.event.title, 
+      startDate.getHours().toString()+":"+startDate.getMinutes().toString()+":00", 
+      endDate.getHours().toString()+":"+endDate.getMinutes().toString()+":00"
+      )
     console.log(this.eventClicked)
+
+    this.editHorarioModel = {
+      Id: this.eventClicked.id.toString(),
+      Nivel: this.eventClicked.nivel,
+      Numero: this.eventClicked.numero,
+      Nombre: this.eventClicked.nombre,
+      HoraInicio: this.eventClicked.horaInicio,
+      HoraFin: this.eventClicked.horaFin
+    };
     
-    this.modalTitle = "Hora #" + arg.event.id.toString();
     this.toggleLiveDemo()
   }
 
@@ -121,6 +157,28 @@ export class EditHorarioComponent implements OnInit {
 
   handleLiveDemoChange(event: any) {
     this.visible = event;
+  }
+
+  onSubmit() {
+    this.editHorarioModel = {
+      Id: this.eventClicked.id.toString(),
+      Nivel: this.eventClicked.nivel,
+      Numero: this.eventClicked.numero, //REVISAR ESTO
+      Nombre: this.nombre,
+      HoraInicio: this.startTime.getHours()+":"+this.startTime.getMinutes()+":00",
+      HoraFin: this.endTime.getHours()+":"+this.endTime.getMinutes()+":00"
+    };
+    console.log(this.editHorarioModel);
+    /*
+    this.service.editHorario(this.eventClicked.id.toString(), this.editHorarioModel).subscribe(
+      res => {
+        this.toastr.success('La hora se ha modificado exitosamente','Hora modificada');
+      },
+      err => {
+        this.toastr.error(err.error.Message, '¡Ups!');
+      }
+    )
+    */
   }
 
 }

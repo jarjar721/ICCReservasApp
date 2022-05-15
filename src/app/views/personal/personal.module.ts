@@ -8,6 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 
 import { DataTablesModule } from "angular-datatables";
+import { TimepickerModule} from 'ngx-bootstrap/timepicker';
 
 import {
   AvatarModule,
@@ -67,7 +68,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     TableModule,
     TabsModule,
     FullCalendarModule, // register FullCalendar with you app
-    DataTablesModule
+    DataTablesModule,
+    TimepickerModule.forRoot()
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -34,13 +34,14 @@ export class HorarioService {
     return this._http.post(this.BaseURI + 'Horarios/Create', body)
   }
 
-  editHorario(id: String, editHorarioModel: FormGroup) {
+  editHorario(id: String, editHorarioModel: any) {
     const body = {
       Id: id,
-      Numero: editHorarioModel.value.Numero,
-      Nivel: editHorarioModel.value.Nivel,
-      HoraInicio: editHorarioModel.value.HoraInicio,
-      HoraFin: editHorarioModel.value.HoraFin
+      Numero: editHorarioModel.Numero,
+      Nivel: editHorarioModel.Nivel,
+      Nombre: editHorarioModel.Nombre,
+      HoraInicio: editHorarioModel.HoraInicio,
+      HoraFin: editHorarioModel.HoraFin
     };
     return this._http.put(this.BaseURI + 'Horarios/Edit/'+id, body);
   }

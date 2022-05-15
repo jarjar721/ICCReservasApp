@@ -167,7 +167,7 @@ export class HorariosComponent implements OnInit {
     horarios.forEach(x => {
       events.push({
         id: x.id.toString(),
-        title: "Hora #" + x.numero.toString(),
+        title: x.nombre,
         startTime: x.horaInicio,
         endTime: x.horaFin
       })
