@@ -24,25 +24,26 @@ export class HorarioService {
     return this._http.get(this.BaseURI+'Horarios/Details/'+id);
   }
 
-  createHorario(createHorarioModel: FormGroup) {
+  createHorario(createHorarioModel: any) {
     const body = {
-      Numero: createHorarioModel.value.Numero,
-      Nivel: createHorarioModel.value.Nivel,
-      HoraInicio: createHorarioModel.value.HoraInicio,
-      HoraFin: createHorarioModel.value.HoraFin
+      Nivel: createHorarioModel.Nivel,
+      Nombre: createHorarioModel.Nombre,
+      HoraInicio: createHorarioModel.HoraInicio,
+      HoraFin: createHorarioModel.HoraFin
     };
+    
     return this._http.post(this.BaseURI + 'Horarios/Create', body)
   }
 
   editHorario(id: String, editHorarioModel: any) {
     const body = {
       Id: id,
-      Numero: editHorarioModel.Numero,
       Nivel: editHorarioModel.Nivel,
       Nombre: editHorarioModel.Nombre,
       HoraInicio: editHorarioModel.HoraInicio,
       HoraFin: editHorarioModel.HoraFin
     };
+
     return this._http.put(this.BaseURI + 'Horarios/Edit/'+id, body);
   }
 

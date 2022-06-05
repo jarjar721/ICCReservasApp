@@ -29,7 +29,6 @@ import { PersonalRoutingModule } from './personal-routing.module';
 
 import { UsuariosComponent } from './usuarios/index/usuarios.component';
 import { HorariosComponent } from './horarios/index/horarios.component';
-import { MateriasComponent } from './materias/materias.component';
 
 import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
 
@@ -46,7 +45,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UsuariosComponent,
     CreateUsuarioComponent,
     HorariosComponent,
-    MateriasComponent,
     EditUsuarioComponent,
     EditHorarioComponent,
   ],

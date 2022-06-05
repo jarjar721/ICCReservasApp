@@ -16,6 +16,14 @@ export class DispositivoService {
     return this._http.get<Dispositivo[]>(this.BaseURI+'Dispositivos');
   }
 
+  getAvailableDispositivos(startDatetime: Date, endDatetime: Date) {
+    const body = {
+      startDatetime: startDatetime,
+      endDatetime: endDatetime
+    }
+    return this._http.post<Dispositivo[]>(this.BaseURI+'Dispositivos/AvailableDispositivosByType', body);
+  }
+
   getDispositivoDetails(id: String) {
     return this._http.get(this.BaseURI+'Dispositivos/Details/'+id);
   }

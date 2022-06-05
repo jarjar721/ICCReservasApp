@@ -16,6 +16,7 @@
             <th>Empleado</th>
             <th>Email</th>
             <th>Username</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -24,6 +25,8 @@
             <td><a routerLink="edit-usuario/{{ usuario.id }}">{{ usuario.names }} {{ usuario.lastNames }}</a></td>
             <td>{{ usuario.email }}</td>
             <td>{{ usuario.userName }}</td>
+            <td *ngIf="usuario.status == 1">Habilitado</td>
+            <td *ngIf="usuario.status == 0">Inhabilitado</td>
             <td>
               <button (click)="deleteUser(usuario.id)" cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
                 Eliminar
@@ -36,6 +39,7 @@
             <th>Empleado</th>
             <th>Email</th>
             <th>Username</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </tfoot>

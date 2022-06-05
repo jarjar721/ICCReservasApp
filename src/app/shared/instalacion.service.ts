@@ -16,6 +16,14 @@ export class InstalacionService {
     return this._http.get<Instalacion[]>(this.BaseURI+'Instalaciones');
   }
 
+  getAvailableInstalaciones(startDatetime: Date, endDatetime: Date) {
+    const body = {
+      startDatetime: startDatetime,
+      endDatetime: endDatetime
+    }
+    return this._http.post<Instalacion[]>(this.BaseURI+'Instalaciones/AvailableInstalaciones', body);
+  }
+
   getInstalacionDetails(id: String) {
     return this._http.get(this.BaseURI+'Instalaciones/Details/'+id);
   }

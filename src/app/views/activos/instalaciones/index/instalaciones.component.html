@@ -31,7 +31,8 @@
               <td>{{ instalacion.capacidad }}</td>
               <td>{{ instalacion.edificio }}</td>
               <td>{{ instalacion.piso }}</td>
-              <td>{{ instalacion.status }}</td>
+              <td *ngIf="instalacion.status == 1">Habilitado</td>
+              <td *ngIf="instalacion.status == 0">Inhabilitado</td>
               <td>
                 <button (click)="deleteInstalacion(instalacion.id)" cButton class="me-1 btn-danger" active="true" size="sm" shape="rounded-pill">
                   Eliminar

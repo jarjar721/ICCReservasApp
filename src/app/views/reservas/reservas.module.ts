@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -7,11 +7,17 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // must go before pl
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 
+// ngx-select-dropdown
+import { SelectDropDownModule } from 'ngx-select-dropdown'
+// ng2-date-picker
+import { DpDatePickerModule } from 'ng2-date-picker';
+
 import {
   AvatarModule,
   ButtonGroupModule,
   ButtonModule,
   CardModule,
+  CollapseModule,
   FormModule,
   GridModule,
   NavModule,
@@ -42,6 +48,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ButtonGroupModule,
     ButtonModule,
     CardModule,
+    CollapseModule,
     FormModule,
     FormsModule,
     GridModule,
@@ -51,7 +58,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ReactiveFormsModule,
     TableModule,
     TabsModule,
-    FullCalendarModule // register FullCalendar with you app
-  ]
+    
+    FullCalendarModule, // register FullCalendar with you app
+    SelectDropDownModule,
+    DpDatePickerModule
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class ReservasModule { }

@@ -2,6 +2,12 @@
     <c-card class="mb-4">
       <c-card-header>
         {{ nivelTitle }}
+        <button 
+          cButton class="me-1" variant="outline" size="sm" style="float: right;"
+          (click)="toggleCreateModal()"
+          >
+          Agregar
+        </button>
       </c-card-header>
       <c-card-body>
         <full-calendar [options]="calendarOptions"></full-calendar>
@@ -9,10 +15,13 @@
     </c-card>
 </div>
 
-<c-modal id="liveDemoModal" alignment="center" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+<c-modal id="liveDemoModal" alignment="center" [visible]="visibleEditModal" (visibleChange)="handleEditModalChange($event)">
   <c-modal-header>
     <h5 cModalTitle>Modificar evento/hora</h5>
-    <button (click)="toggleLiveDemo()" cButtonClose></button>
+    <button (click)="deleteHora(id)" cButton class="me-1" variant="outline" size="sm" style="float: right;">
+          Eliminar
+    </button>
+    <button (click)="toggleEditModal()" cButtonClose></button>
   </c-modal-header>
   <c-modal-body>
     <label cLabel>Nombre</label>
@@ -25,7 +34,29 @@
     </div>
   </c-modal-body>
   <c-modal-footer>
-    <button (click)="toggleLiveDemo()" cButton color="secondary">Cerrar</button>
-    <button (click)="onSubmit()" cButton color="primary">Guardar</button>
+    <button (click)="toggleEditModal()" cButton color="secondary">Cerrar</button>
+    <button (click)="onSubmitEdit()" cButton color="primary">Guardar</button>
+  </c-modal-footer>
+</c-modal>
+
+
+<c-modal id="liveDemoModal" alignment="center" [visible]="visibleCreateModal" (visibleChange)="handleCreateModalChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Agregar evento/hora</h5>
+    <button (click)="toggleCreateModal()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <label cLabel>Nombre</label>
+    <input cFormControl [(ngModel)]="nombre" required type="text"/>
+    <div class="col-12">
+      <label cLabel>Hora inicial</label>
+      <timepicker [(ngModel)]="startTime"></timepicker>
+      <label cLabel>Hora final</label>
+      <timepicker [(ngModel)]="endTime"></timepicker>
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleCreateModal()" cButton color="secondary">Cerrar</button>
+    <button (click)="onSubmitCreate()" cButton color="primary">Guardar</button>
   </c-modal-footer>
 </c-modal>

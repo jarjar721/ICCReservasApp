@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HorariosComponent } from './horarios/index/horarios.component';
-import { MateriasComponent } from './materias/materias.component';
 import { UsuariosComponent } from './usuarios/index/usuarios.component';
 import { CreateUsuarioComponent } from './usuarios/create/create-usuario.component';
 import { EditUsuarioComponent } from './usuarios/edit-usuario/edit-usuario.component';
@@ -51,13 +50,6 @@ const routes: Routes = [
         component: EditHorarioComponent,
         data: {
           title: 'Editar Horario',
-        },
-      },
-      {
-        path: 'materias',
-        component: MateriasComponent,
-        data: {
-          title: 'Materias',
         },
       }
     ],

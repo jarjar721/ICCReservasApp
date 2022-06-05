@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,10 +30,10 @@ import { AuthGuard } from './auth/auth.guard'
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { AuthenticationService } from './shared/authentication.service';
 import { UserService } from './shared/user.service';
-import { MateriaService } from './shared/materia.service';
 import { HorarioService } from './shared/horario.service';
 import { DispositivoService } from './shared/dispositivo.service';
 import { InstalacionService } from './shared/instalacion.service';
+import { ReservaService } from './shared/reserva.service';
 
 import {
   AvatarModule,
@@ -116,10 +116,10 @@ const APP_CONTAINERS = [
     EnvironmentUrlService,
     AuthenticationService,
     UserService,
-    MateriaService,
     HorarioService,
     DispositivoService,
     InstalacionService,
+    ReservaService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

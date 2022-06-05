@@ -18,7 +18,7 @@ export class EditUsuarioComponent implements OnInit {
 
   statuses: Array<any> = [
     {id: 1, name: "Habilitado"},
-    {id: 2, name: "Deshabilitado"}
+    {id: 0, name: "Deshabilitado"}
   ];
 
   constructor(

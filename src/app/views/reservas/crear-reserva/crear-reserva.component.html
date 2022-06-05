@@ -6,51 +6,104 @@
       <c-card-body>
         <div class="col-12">
           <form #customStylesForm="ngForm"
-                  (ngSubmit)="onSubmit1()"
-                  [validated]="customStylesValidated"
-                  cForm
-                  class="row g-3 needs-validation"
+              [formGroup]="baseReservaModel"
+              (ngSubmit)="onSubmit()"
+              cForm
+              class="row g-3 needs-validation"
             >
+            <c-col md="12">
+              <label cLabel >Solicitante</label>
+                <ngx-select-dropdown 
+                  (change)="userSelectionChanged($event)" 
+                  [config]="config" 
+                  [options]="userSelectOptions" 
+                  [disabled]="true"
+                  [_value] = "selectedUser"
+                  [multiple]="false" 
+                  >
+                </ngx-select-dropdown>
+              </c-col>
               <c-col md="12">
-                <label cLabel for="validationCustom01">Título</label>
-                <input cFormControl id="validationCustom01" required type="text" value="Mark" />
-                <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                <label cLabel >Título</label>
+                <input cFormControl formControlName="Titulo" required type="text" placeholder="Nombre de la reserva o evento" />
+                <label class="text-danger" *ngIf="baseReservaModel.get('Titulo')?.touched && baseReservaModel.get('Titulo')?.errors?.['required']">Campo requerido</label>
               </c-col>
               <div class="mb-3">
-                <label cLabel for="exampleFormControlTextarea1">Descripción</label>
-                <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
-                <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                <label cLabel >Descripción</label>
+                <textarea cFormControl formControlName="Descripcion" rows="3" placeholder="Descripción de la reserva o evento. Destaque todas las consideraciones que necesitará."></textarea>
+                <label class="text-danger" *ngIf="baseReservaModel.get('Descripcion')?.touched && baseReservaModel.get('Descripcion')?.errors?.['required']">Campo requerido</label>
               </div>
               <c-col md="4">
                   <c-row>
-                      <label cLabel for="validationCustomUsername">Inicio</label>
-                      <c-col md="6">
-                          <input cFormControl id="validationCustom02" required type="text" value="Fecha" />
-                      </c-col>
-                      <c-col md="6">
-                          <input cFormControl id="validationCustom02" required type="text" value="Hora" />
-                      </c-col>
-                      <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                      <label cLabel >Inicio</label>
+                      <dp-date-picker 
+                        (onChange)="startDatetimeChanged($event)"
+                        theme="dp-material" 
+                        mode='daytime'
+                        [config]="startDatePickerConfig" 
+                        placeholder="Seleccionar fecha">
+                        [(ngModel)]="startDate"
+                      </dp-date-picker>
+                      <label class="text-danger" *ngIf="startDateEvent == 'touched' && !startDatetimeSelectedBool">Campo requerido</label>
                   </c-row>
               </c-col>
               <c-col md="4">
                   <c-row>
-                      <label cLabel for="validationCustomUsername">Fin</label>
-                      <c-col md="6">
-                          <input cFormControl id="validationCustom02" required type="text" value="Fecha" />
-                      </c-col>
-                      <c-col md="6">
-                          <input cFormControl id="validationCustom02" required type="text" value="Hora" />
-                      </c-col>
-                      <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+                      <label cLabel >Fin</label>
+                      <dp-date-picker 
+                        (onChange)="endDatetimeChanged($event)"
+                        theme="dp-material" 
+                        mode='daytime' 
+                        [config]="endDatePickerConfig" 
+                        placeholder="Seleccionar fecha">
+                        [(ngModel)]="endDate"
+                      </dp-date-picker>
+                      <label class="text-danger" *ngIf="endDateEvent == 'touched' && !endDatetimeSelectedBool">Campo requerido</label>
                   </c-row>
               </c-col>
+              <c-col md="4">
+                <label cLabel >Instalación</label>
+                <ngx-select-dropdown 
+                  (change)="instalacionSelectionChanged($event)" 
+                  [config]="config" 
+                  [options]="instalaciones" 
+                  [multiple]="false" 
+                  [(ngModel)]="instalacionID"
+                  >
+                </ngx-select-dropdown>
+              </c-col>
 
-              <c-col xs="12" style="float: right;">
-                <button (click)="onReset1()" cButton class="me-1" color="secondary" type="reset">
+              <c-col md="8">
+                <c-card class="mt-3" [visible]="instalacionSelectedBool && startDatetimeSelectedBool && endDatetimeSelectedBool" cCollapse>
+                  <c-card-body>
+                    <full-calendar [options]="calendarReservasOptions"></full-calendar>
+                  </c-card-body>
+                </c-card>
+              </c-col>
+              <c-col md="4">
+                <c-card class="mt-3" [visible]="instalacionSelectedBool && startDatetimeSelectedBool && endDatetimeSelectedBool" cCollapse>
+                  <c-card-body>
+                    <form>
+                      <div *ngFor="let dispositivo of dispositivos" class="form-group row">
+                        <label class="col-sm-8 col-form-label">{{ dispositivo.tipo }} (Disponible: {{ dispositivo.count }})</label>
+                        <div class="col-sm-4">
+                          <input type="number" min="0" max="{{ dispositivo.count }}" oninput="validity.valid||(value='');" class="form-control" placeholder="0" (change)="countByDispositivo(dispositivo.tipo, $event)">
+                        </div>
+                      </div>
+                    </form>
+                  </c-card-body>
+                </c-card>
+              </c-col>
+
+              <c-col xs="12" style="text-align: right;">
+                <button (click)="onReset()" cButton class="me-1" color="secondary" type="reset">
                   Cancelar
                 </button>
-                <button cButton color="primary" type="submit">
+                <button 
+                  cButton 
+                  [disabled]="!instalacionSelectedBool || !startDatetimeSelectedBool || !endDatetimeSelectedBool || !baseReservaModel.valid || dispositivosByTypeArray.length == 0" 
+                  color="primary" type="submit" 
+                  >
                   <svg cIcon class="me-2 icon" name="cil-check"></svg>
                   Crear
                 </button>
