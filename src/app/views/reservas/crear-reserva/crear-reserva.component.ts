@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Instalacion } from 'src/app/models/instalacion.model';
 import { Usuario } from 'src/app/models/usuario.model';
+import { CreateReservaDTO } from "src/app/interfaces/create-reserva-DTO";
 
 import { InstalacionService } from 'src/app/shared/instalacion.service';
 import { UserService } from 'src/app/shared/user.service';
@@ -23,7 +24,6 @@ import { DispositivosTypeAmount } from 'src/app/models/dispositivos-type-amount.
 import { Reserva } from 'src/app/models/reserva.model';
 
 import * as dayjs from 'dayjs'
-import { DatePickerComponent } from 'ng2-date-picker';
 
 @Component({
   selector: 'app-crear-reserva',
@@ -69,7 +69,6 @@ export class CrearReservaComponent implements OnInit {
   startDatePickerConfig = {
     format: 'DD-MM-YYYY hh:mm A',
     monthFormat: 'MMM, YYYY',
-    startDate: dayjs().add(2, 'day').startOf('date'),
     min: dayjs().add(2, 'day').startOf('date'),
     max: dayjs(dayjs().add(2, 'day')).add(10, 'day').startOf('date'),
     hours12Format: 'hh',
@@ -152,16 +151,16 @@ export class CrearReservaComponent implements OnInit {
 
   getReservasInRange() {
     if (this.startDatetimeSelectedBool && this.endDatetimeSelectedBool) {
-      this.reservaService.getReservasInRange(this.startDate, this.endDate).subscribe(
+      this.reservaService.getReservasInRange(dayjs(this.startDate).day(1).toDate(), dayjs(this.startDate).day(5).toDate()).subscribe(
         res => {
           this.reservas = (res as any)
-          console.log(this.reservas);
 
-          this.events = [];
           this.setCalendarEvents(this.events, this.reservas);
 
+          this.calendarReservasOptions.events = this.events;
+
+          console.log(this.reservas);
           console.log(this.events);
-          this.calendarReservasOptions.events = [...this.events];
         },
         err => {
           console.log(err);
@@ -262,6 +261,10 @@ export class CrearReservaComponent implements OnInit {
     if (typeof event != "undefined") {
       this.endDatetimeSelectedBool = true;
       this.endDate = event.$d;
+      this.calendarReservasOptions.validRange = { 
+        start: dayjs(this.startDate).day(1).format(),
+        end: dayjs(this.startDate).day(5).format() 
+      }
       if (this.startDatetimeSelectedBool != false) {
         this.getAvailableInstalaciones();
         this.getAvailableDispositivos();
@@ -306,21 +309,27 @@ export class CrearReservaComponent implements OnInit {
 
 
   onSubmit() {
-    var createReservaModel = {
+    var createReservaModel: CreateReservaDTO = {
       titulo: this.baseReservaModel.value.Titulo,
       descripcion: this.baseReservaModel.value.Descripcion,
-      datetimeCreacion: new Date(),
       datetimeInicialReservacion: this.startDate,
       datetimeFinalReservacion: this.endDate,
+      dispositivosTypeAmount: this.dispositivosByTypeArray,
       userID: this.loggedUserID,
-      instalacionID: this.instalacionID,
-      reservaDispositivo: this.dispositivosByTypeArray,
-      statusReserva: {
-        fechaStatus: new Date(),
-        statusID: 1
-      }
+      instalacionID: this.instalacionID
     };
     console.log(createReservaModel);
+
+    this.reservaService.createReserva(createReservaModel).subscribe(
+      res => {
+        //this.router.navigate(['/personal/usuarios']);
+
+        this.toastr.success('La reserva se ha creado exitosamente','Reserva creada');
+      },
+      err => {
+        this.toastr.error(err.error.Message, '¡Ups!');
+      }
+    )
   }
 
   onReset() {

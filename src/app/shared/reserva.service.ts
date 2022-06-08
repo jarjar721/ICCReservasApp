@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CreateReservaDTO } from '../interfaces/create-reserva-DTO';
 
 import { Reserva } from '../models/reserva.model';
 
@@ -21,6 +22,10 @@ export class ReservaService {
       endDatetime: endDatetime
     }
     return this._http.post<Reserva[]>(this.BaseURI+'Reservas/ReservasInRange', body);
+  }
+
+  createReserva(body: CreateReservaDTO) {
+    return this._http.post(this.BaseURI + 'Reservas/Create', body)
   }
 
 }
